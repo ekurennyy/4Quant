@@ -1,0 +1,324 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600,600italic);
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+
+$base-font-size: 16px;
+$base-vertical-space: $base-font-size * 1.5;
+$horizontal-space: $base-vertical-space / 2;
+$base-text-color: #434343;
+$base-background-color: #fcfcfc;
+$alt-font-family: 'Source Sans Pro', sans-serif;
+$base-font-family: 'Droid Serif', serif;
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: $base-font-size;
+}
+
+@media (max-width: 47em) {
+    html {
+        font-size: $base-font-size * .8;
+    }
+}
+
+/* ----------- iPhone 4 and 4S ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    html {
+        font-size: $base-font-size * .8;
+    }
+}
+
+/* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    html {
+        font-size: $base-font-size * .8;
+    }
+}
+
+/* ----------- iPhone 6 ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    html {
+        font-size: $base-font-size * .8;
+    }
+}
+
+/* ----------- iPhone 6+ ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 414px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+    html {
+        font-size: $base-font-size * .8;
+    }
+}
+
+/* ----------- iPad mini ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+    html {
+        font-size: $base-font-size * 1;
+    }
+
+}
+
+/* ----------- iPad 1 and 2 ----------- */
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+    html {
+        font-size: $base-font-size * 1;
+    }
+}
+
+/* ----------- iPad 3 and 4 ----------- */
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    html {
+        font-size: $base-font-size * 1;
+    }
+}
+
+
+body {
+    color: $base-text-color;
+    background-color: $base-background-color;
+    width: 40em;
+    max-width: 100%;
+    padding: 2em 1em 1em 1em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: $base-font-family;
+    text-rendering: optimizeLegibility;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  color: $base-text-color;
+}
+
+@media (max-width: 48em) {
+    body {
+        padding: 1em 1em 0 1em;
+    }
+}
+
+header {
+    text-align: center;
+}
+
+h1,
+h2,
+h3, h4 {
+    text-align: center;
+    font-family: $alt-font-family;
+    font-weight: 600;
+    font-size: 1.3em;
+    margin: 2em 1em 1em 1em;
+}
+
+h1 a,
+h1 a:visited {
+    color: $base-text-color;
+    text-decoration: none;
+}
+
+h2 a,
+h2 a:visited {
+    color: $base-text-color;
+}
+
+@media (max-width: 48em) {
+    h3 {
+        font-weight: normal;
+    }
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+h3, h4 {
+    font-weight: 400;
+}
+
+h4 {
+  font-family: $base-font-family;
+  margin: 0;
+}
+
+p + p {
+    margin: 1em 0;
+    text-indent: 2em;
+}
+
+.news p {
+  margin: 0 0 1em 0;
+
+  text-indent: 0;
+}
+
+.news div {
+  line-height: 1.7em;
+  font-size: 1.2em;
+}
+
+.news {
+    margin: 0 0 2.5em 0;
+}
+
+//todo: macht das was?
+.no-indent {
+    text-indent: 0;
+}
+
+p,
+ul {
+    line-height: 1.7em;
+    font-size: 1.2em;
+}
+
+section {
+    margin: 0 auto;
+    padding: 1.5em;
+    -webkit-border-radius: 0.3125em;
+    border-radius: 0.3125em;
+}
+
+@media (max-width: 48em) {
+  section {
+      padding: 1.5em .5em 1.5em .5em;
+  }
+}
+
+section > *:first-child {
+    margin-top: 0;
+}
+
+section > *:last-child {
+    margin-bottom: 0;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.alt-font {
+  font-family: $alt-font-family;
+  font-size: 1.15em;
+}
+
+header, nav {
+  text-align: center;
+  font-family: $alt-font-family;
+}
+
+.list-horizontal {
+  list-style: none;
+  padding: 0;
+  margin:0 0 0 0;
+}
+ .list-horizontal li {
+    display: inline;
+    padding-left: 4.0375px;
+    padding-right: 4.0375px;
+}
+
+.caption {
+  text-align: right;
+  vertical-align: middle;
+}
+
+.brand {
+  font-family: $alt-font-family;
+  font-size: 2rem;
+  text-decoration: none;
+
+  display: block;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+code {
+  background-color: rgba(0,0,0,0.04);
+  font-size: .8em;
+}
+
+.brand-name {
+  line-height: 1;
+}
+
+.claim {
+  font-size: 0.70rem;
+  text-transform: uppercase;
+
+}
+
+img {
+  width: 100%;
+}
+
+.table {
+  display: table;
+  font-size: 1.2em;
+}
+
+.row {
+  display: table-row;
+}
+
+.cell {
+  display: table-cell;
+  line-height: 1.7em;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 10px;
+}
+
+.code {
+  background-color: rgba(0,0,0,0.04);
+  font-size: .8em;
+  font-family: monospace;
+  display: block;
+  text-indent: 0;
+  font-family: 'Roboto Mono';
+  padding: .5em;
+  margin: 2em 1em 1em 1em;
+}
+
+.centered {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-indent: 0
+}

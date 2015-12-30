@@ -6,7 +6,7 @@ title: 'Indexing Medicine with Smart Image Databases'
 
 # Indexing Medicine with Smart Image Databases
 
-<span style="font-style: italic;text-align: center;display: block">December 27, 2015 — 11 mins read</span>
+<div class="date">December 27, 2015 — 11 mins read</div>
 
 ## Anomaly detection in patients is challenging because reference values are vague
 

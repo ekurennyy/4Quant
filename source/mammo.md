@@ -6,7 +6,7 @@ title: 'Mammo'
 
 # Mammo
 
-<span style="font-style: italic;text-align: center;display: block">December 27, 2015 — 11 mins read</span>
+<div class="date">December 27, 2015 — 11 mins read</div>
 
 We are training our proven, proprietary algorithm to accurately and quickly detect and classify anomalies in mammograms to enable early detection of breast cancer.
 

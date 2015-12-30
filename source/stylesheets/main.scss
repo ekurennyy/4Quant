@@ -11,15 +11,15 @@ $alt-font-family: 'Source Sans Pro', sans-serif;
 $base-font-family: 'Droid Serif', serif;
 
 html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: $base-font-size;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: $base-font-size;
 }
 
 @media (max-width: 47em) {
-    html {
-        font-size: $base-font-size * .8;
-    }
+  html {
+    font-size: $base-font-size * .8;
+  }
 }
 
 /* ----------- iPhone 4 and 4S ----------- */
@@ -30,7 +30,7 @@ html {
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
     html {
-        font-size: $base-font-size * .8;
+      font-size: $base-font-size * .8;
     }
 }
 
@@ -42,7 +42,7 @@ html {
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
     html {
-        font-size: $base-font-size * .8;
+      font-size: $base-font-size * .8;
     }
 }
 
@@ -54,7 +54,7 @@ html {
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
     html {
-        font-size: $base-font-size * .8;
+      font-size: $base-font-size * .8;
     }
 }
 
@@ -66,7 +66,7 @@ html {
   and (max-device-width: 736px)
   and (-webkit-min-device-pixel-ratio: 3) {
     html {
-        font-size: $base-font-size * .8;
+      font-size: $base-font-size * .8;
     }
 }
 
@@ -78,9 +78,8 @@ html {
   and (max-device-width: 1024px)
   and (-webkit-min-device-pixel-ratio: 1) {
     html {
-        font-size: $base-font-size * 1;
+      font-size: $base-font-size * 1;
     }
-
 }
 
 /* ----------- iPad 1 and 2 ----------- */
@@ -90,7 +89,7 @@ html {
   and (max-device-width: 1024px)
   and (-webkit-min-device-pixel-ratio: 1) {
     html {
-        font-size: $base-font-size * 1;
+      font-size: $base-font-size * 1;
     }
 }
 
@@ -101,24 +100,24 @@ html {
   and (max-device-width: 1024px)
   and (-webkit-min-device-pixel-ratio: 2) {
     html {
-        font-size: $base-font-size * 1;
+      font-size: $base-font-size * 1;
     }
 }
 
 
 body {
-    color: $base-text-color;
-    background-color: $base-background-color;
-    width: 40em;
-    max-width: 100%;
-    padding: 2em 1em 1em 1em;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: $base-font-family;
-    text-rendering: optimizeLegibility;
+  color: $base-text-color;
+  background-color: $base-background-color;
+  width: 40em;
+  max-width: 100%;
+  padding: 2em 1em 1em 1em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: $base-font-family;
+  text-rendering: optimizeLegibility;
 }
 
 a, a:link, a:visited, a:hover, a:active {
@@ -126,48 +125,48 @@ a, a:link, a:visited, a:hover, a:active {
 }
 
 @media (max-width: 48em) {
-    body {
-        padding: 1em 1em 0 1em;
-    }
+  body {
+    padding: 1em 1em 0 1em;
+  }
 }
 
 header {
-    text-align: center;
+  text-align: center;
 }
 
 h1,
 h2,
 h3, h4 {
-    text-align: center;
-    font-family: $alt-font-family;
-    font-weight: 600;
-    font-size: 1.3em;
-    margin: 2em 1em 1em 1em;
+  text-align: center;
+  font-family: $alt-font-family;
+  font-weight: 600;
+  font-size: 1.3em;
+  margin: 2em 1em 1em 1em;
 }
 
 h1 a,
 h1 a:visited {
-    color: $base-text-color;
-    text-decoration: none;
+  color: $base-text-color;
+  text-decoration: none;
 }
 
 h2 a,
 h2 a:visited {
-    color: $base-text-color;
+  color: $base-text-color;
 }
 
 @media (max-width: 48em) {
-    h3 {
-        font-weight: normal;
-    }
+  h3 {
+    font-weight: normal;
+  }
 }
 
 h1 {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 h3, h4 {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 h4 {
@@ -176,8 +175,8 @@ h4 {
 }
 
 p + p {
-    margin: 1em 0;
-    text-indent: 2em;
+  margin: 1em 0;
+  text-indent: 2em;
 }
 
 .news p {
@@ -197,34 +196,34 @@ p + p {
 
 //todo: macht das was?
 .no-indent {
-    text-indent: 0;
+  text-indent: 0;
 }
 
 p,
 ul {
-    line-height: 1.7em;
-    font-size: 1.2em;
+  line-height: 1.7em;
+  font-size: 1.2em;
 }
 
 section {
-    margin: 0 auto;
-    padding: 1.5em;
-    -webkit-border-radius: 0.3125em;
-    border-radius: 0.3125em;
+  margin: 0 auto;
+  padding: 1.5em;
+  -webkit-border-radius: 0.3125em;
+  border-radius: 0.3125em;
 }
 
 @media (max-width: 48em) {
   section {
-      padding: 1.5em .5em 1.5em .5em;
+    padding: 1.5em .5em 1.5em .5em;
   }
 }
 
 section > *:first-child {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 section > *:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 strong {
@@ -247,9 +246,9 @@ header, nav {
   margin:0 0 0 0;
 }
  .list-horizontal li {
-    display: inline;
-    padding-left: 4.0375px;
-    padding-right: 4.0375px;
+  display: inline;
+  padding-left: 4.0375px;
+  padding-right: 4.0375px;
 }
 
 .caption {
@@ -261,10 +260,13 @@ header, nav {
   font-family: $alt-font-family;
   font-size: 2rem;
   text-decoration: none;
-
   display: block;
 
   &:hover {
+    text-decoration: none;
+  }
+
+  a {
     text-decoration: none;
   }
 }
@@ -321,4 +323,9 @@ img {
   width: 100%;
   text-align: center;
   text-indent: 0
+}
+
+.date {
+  font-style: italic;
+  text-align: center;
 }

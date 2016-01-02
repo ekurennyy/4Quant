@@ -180,7 +180,7 @@ Furthermore the ability to parallelize and scale means thousands to millions of 
 
 ### Processing the Data
 
-Once the cluster has been comissioned and you have the SparkContext called <code>sc</code> (automatically provided in [Databricks Cloud](https://databricks.com/product/databricks) or [Zeppelin](http://zeppelin.incubator.apache.org/), the data can be loaded using the Spark Image Layer. Since we are using real-time analysis, we acquire the images from an archive of images and create a database out of the results.
+Once the cluster has been comissioned and you have the SparkContext called `sc` (automatically provided in [Databricks Cloud](https://databricks.com/product/databricks) or [Zeppelin](http://zeppelin.incubator.apache.org/), the data can be loaded using the Spark Image Layer. Since we are using real-time analysis, we acquire the images from an archive of images and create a database out of the results.
 
 <span class="code">
   val iqaeDB = sc.createImageDatabase("s3n://capsule-endoscopy/scans/*/*.avi",<br>
@@ -188,23 +188,20 @@ Once the cluster has been comissioned and you have the SparkContext called <code
   iqaeDB.registerImageTable("Endoscopy")
 </span>
 
-Although we execute the command on one machine, the analysis will be distributed over the entire set of cluster resources available to <code>sc</code>. To further process the images, we can take advantage of the rich set of functionality built into Spark Image Layer.
+Although we execute the command on one machine, the analysis will be distributed over the entire set of cluster resources available to `sc`. To further process the images, we can take advantage of the rich set of functionality built into Spark Image Layer.
 
 The entire pipeline can then be started to run in real-time on all the new images as they stream in. If the tasks become more computationally intensive, then the computing power can be scaled up and down elastically.
 
 ### Learn More
 
-To find out more about the technical aspects of our solution, check out our presentation at the [Spark Summit](#) or watch the [video](https://www.youtube.com/watch?v=ohR_y7HZaHA&index=10&list=PL-x35fyliRwiy50Ud2ltPx8_yA4H34ppJ).
+To find out more about the technical aspects of our solution, check out our presentation at the [Spark Summit](http://4quant.com/spark-east-2015) or watch the [video](https://www.youtube.com/watch?v=ohR_y7HZaHA&index=10&list=PL-x35fyliRwiy50Ud2ltPx8_yA4H34ppJ).
 Check out our other demos to see how 4Quant can help you:
 
-<div class="news">
-  <p><a href="#">Check train tracks in real time</a></p>
-  <p><a href="#">Count people from drone footage</a></p>
-  <p><a href="#">Track criminals in cars using traffic cameras</a></p>
-  <p><a href="#">Counting Cars in Satellite Images</a></p>
-  <p><a href="#">Finding buildings and forests in Satellite Images</a></p>
-</div>
-
+* [Check train tracks in real time](http://4quant.com/Railway-Check)
+* [Count people from drone footage](http://4quant.com/Drone-People-Counting)
+* [Track criminals in cars using traffic cameras](http://4quant.com/Pursuing-Criminals/)
+* [Counting Cars in Satellite Images](http://4quant.com/countingcarsdemo)
+* [Finding buildings and forests in Satellite Images](http://4quant.com/geospatialdemo/)
 
 <!-- Strange text -->
 

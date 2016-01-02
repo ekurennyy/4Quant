@@ -74,7 +74,7 @@ With cloud-integration and Big Data-based frameworks, even handling an entire ci
 
 ### Processing the Data
 
-Once the cluster has been comissioned and you have the StreamingSparkContext called <code>ssc</code> (automatically provided in [Databricks Cloud or Zeppelin](https://databricks.com/product/databricks)), the data can be loaded using the Spark Image Layer. Since we are using real-time analysis, we acquire the images from a streaming source.
+Once the cluster has been comissioned and you have the StreamingSparkContext called `ssc` (automatically provided in [Databricks Cloud or Zeppelin](https://databricks.com/product/databricks)), the data can be loaded using the Spark Image Layer. Since we are using real-time analysis, we acquire the images from a streaming source.
 
 <span class="code">
   val mriScanner = MedicalCameraReceiver("https://mri-scanner-8091")<br/>

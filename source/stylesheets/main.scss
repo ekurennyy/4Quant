@@ -318,11 +318,16 @@ img {
   margin: 2em 1em 1em 1em;
 }
 
-.centered {
-  display: block;
-  width: 100%;
+.centered-image {
   text-align: center;
-  text-indent: 0
+  text-indent: 0;
+}
+
+.half-width-image {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  text-indent: 0;
 }
 
 .date {

@@ -17,30 +17,30 @@ The standard procedure for both radiotherapy and surgery involves making scans a
 The latest surgical suites and MRI technologies have made subsecond measurements a reality. These measurements are already being used to assist therapy, but the value is limited without the ability to process the images in real-time.
 
 <span class="code">SELECT Image as ChestCT FROM PatientImages WHERE Modality="CT" AND Region="Chest"</span>
-<span class="centered"><img src="images/mammo-001.gif" style="width:180px"/></span>
+<div class="centered-image"><img src="images/mammo-001.gif" style="width:180px"/></div>
 
 ### Perform Segmentation
 
 <span class="code">SELECT CHEST_SEGMENTATION(Image) as ChestSeg FROM ChestCT</span>
-<span class="centered"><img src="images/mammo-002.gif" style="width:180px"/></span>
+<div class="centered-image"><img src="images/mammo-002.gif" style="width:180px"/></div>
 
 ### Extract the heart since it is the most dose-sensitive
 
 <span class="code">SELECT HeartRegion FROM ChestSeq</span>
 
-<span class="centered"><img src="images/mammo-003.gif" style="width:180px"/></span>
+<div class="centered-image"><img src="images/mammo-003.gif" style="width:180px"/></div>
 
 ### Track the Position of the Heart
 
 <span class="code">SELECT CenterOfMass(roi) FROM HeartRegion GROUP BY time</span>
 
-<span class="centered"><img src="images/mammo-004.png" style="width:100%"/></span>
+<div class="centered-image"><img src="images/mammo-004.png"></div>
 
 It is also possible to create outlines from the structures which can then be used to update surgical plans, and provide information to the latest generation of devices which can then updating the treatment plan in real time.
 
 <span class="code">SELECT CreateOutlines(roi) FROM HeartRegion GROUP BY Organ</span>
 
-<span class="centered"><img src="images/mammo-005.png" style="width:100%"/></span>
+<div class="centered-image"><img src="images/mammo-005.png"></div>
 
 ### *Image Query and Analysis Engine*
 
@@ -54,7 +54,7 @@ The quantitatively meaningful data can then be used to train machine learning al
 
 Here we show a simple decision tree trained to identify lesions using color, position, texture and shape.
 
-<span class="centered"><img src="images/mammo-006.png" style="width:100%"/></span>
+<div class="centered-image"><img src="images/mammo-006.png"></div>
 
 Furthermore the ability to parallelize and scale means thousands to millions of videos can be analyzed at the same time to learn even more about the structures of the digestive track and identify new possibilities for diagnosis.
 
@@ -62,11 +62,11 @@ Furthermore the ability to parallelize and scale means thousands to millions of 
 
 The first question is how the data can be processed. The basic work is done by a simple workflow on top of our Spark Image Layer. This abstracts away the complexities of cloud computing and distributed analysis. You focus only on the core task of image processing.
 
-<span class="centered"><img src="images/mammo-007.svg" style="width:200px"/></span>
+<div class="centered-image"><img src="images/mammo-007.svg" style="width:200px"/></div>
 
 The true value of such a scalable system is not in the single analysis, but in the ability to analyze hundreds, thousands, and even millions of samples at the same time.
 
-<span class="centered"><img src="images/mammo-008.svg" style="width:100%"/></span>
+<div class="centered-image"><img src="images/mammo-008.svg"></div>
 
 With cloud-integration and Big Data-based frameworks, even handling an entire city network with 100s of drones and cameras running continuously is an easy task without worrying about networks, topology, or fault-tolerance.
 

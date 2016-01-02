@@ -21,13 +21,13 @@ The graph below shows the same patient with (left) and without (right) precision
 * The precision case is *clear*, the patient’s liver is definitely larger than it should be.
 * The standard medicine is *inconclusive*, a bit larger, but nothing definitive.
 
-<span class="centered"><img src="images/indexing-001.png" style="width:100%"/></span>
+<div class="centered-image"><img src="images/indexing-001.png"></div>
 
 Despite recent boosts in popularity, both personalized and precision medicine are still not part of the standard diagnosis process for many diseases.
 
 ### *Image Query and Analysis Engine*
 
-<span class="centered"><img src="images/indexing-002.png" style="width:50%"/></span>
+<div class="half-width-image"><img src="images/indexing-002.png"/></div>
 
 Standard imaging modalities like thorax CT and MRI are commonly used to diagnose a number of different diseases. These images are normally examined once for a single specific diagnosis and then archived. Hospitals are required to archive a majority of patient imaging studies and scans for a minimum of 10 years. These essential data are just sitting unused on PACS, tapes, and other storage volumes.
 
@@ -41,7 +41,7 @@ A hospital database with thousands of patient images can be quickly screening fo
 
 <span class="code">SELECT Image as ChestCT FROM PatientImages WHERE Modality="CT" AND Region="Chest"</span>
 
-<span class="centered"><img src="images/indexing-003.gif" style="width:50%"/></span>
+<div class="half-width-image"><img src="images/indexing-003.gif"></div>
 
 ### Perform Segmentation
 
@@ -49,11 +49,11 @@ A hospital database with thousands of patient images can be quickly screening fo
 SELECT CHEST_SEGMENTATION(Image) as ChestSeg FROM ChestCT
 </span>
 
-<span class="centered"><img src="images/indexing-004.gif" style="width:50%"/></span>
+<div class="half-width-image"><img src="images/indexing-004.gif"></div>
 
 ### To individual organs
 
-<span class="centered"><img src="images/indexing-005.gif" style="width:50%"/></span>
+<div class="half-width-image"><img src="images/indexing-005.gif"></div>
 
 ### Extract the bones
 
@@ -61,7 +61,7 @@ SELECT CHEST_SEGMENTATION(Image) as ChestSeg FROM ChestCT
 SELECT BoneImage FROM ChestSeq
 </span>
 
-<span class="centered"><img src="images/indexing-006.gif" style="width:50%"/></span>
+<div class="half-width-image"><img src="images/indexing-006.gif"></div>
 
 ### Extract Meaningful Information
 
@@ -70,7 +70,7 @@ SELECT pt.Age,EstimateBoneMineralDensity(cs.BoneImage) as BMD<br/>
   FROM PatientDatabase AS pt JOIN ChestSeq AS cs ON pt.id == cs.PatientId
 </span>
 
-<span class="centered"><img src="images/indexing-007.png" style="width:100%"/></span>
+<div class="centered-image"><img src="images/indexing-007.png"></div>
 
 ### What else?
 
@@ -80,7 +80,7 @@ Our *Image Query and Analysis Engine* runs in the cloud or locally and is used a
 SELECT * FROM ChestSeq GROUP BY Tissue.Type
 </span>
 
-<span class="centered"><img src="images/indexing-008.png" style="width:100%"/></span>
+<div class="centered-image"><img src="images/indexing-008.png"></div>
 
 <table class="styled-table">
   <thead>
@@ -207,7 +207,7 @@ The quantitatively meaningful data can then be used to train machine learning al
 
 Here we show a simple decision tree trained to identify lesions using color, position, texture and shape.
 
-<span class="centered"><img src="images/indexing-009.png" style="width:100%"/></span>
+<div class="centered-image"><img src="images/indexing-009.png"></div>
 
 Furthermore the ability to parallelize and scale means thousands to millions of videos can be analyzed at the same time to learn even more about the structures of the digestive track and identify new possibilities for diagnosis.
 
@@ -215,11 +215,11 @@ Furthermore the ability to parallelize and scale means thousands to millions of 
 
 The first question is how the data can be processed. The basic work is done by a simple workflow on top of our Spark Image Layer. This abstracts away the complexities of cloud computing and distributed analysis. You focus only on the core task of image processing.
 
-<span class="centered"><img src="images/indexing-010.svg" style="width:40%"/></span>
+<div class="centered-image"><img src="images/indexing-010.svg" style="width:40%"/></div>
 
 The true value of such a scalable system is not in the single analysis, but in the ability to analyze hundreds, thousands, and even millions of samples at the same time.
 
-<span class="centered"><img src="images/indexing-011.svg" style="width:100%"/></span>
+<div class="centered-image"><img src="images/indexing-011.svg"></div>
 
 With cloud-integration and Big Data-based frameworks, even handling an entire city network with 100s of drones and cameras running continuously is an easy task without worrying about networks, topology, or fault-tolerance.
 

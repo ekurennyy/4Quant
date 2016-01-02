@@ -329,3 +329,27 @@ img {
   font-style: italic;
   text-align: center;
 }
+
+.styled-table {
+  width: 100%;
+  font-size: .7em;
+  border-spacing: 0;
+
+  th {
+    padding: 4px 2px;
+
+    &:first-child {
+      text-align: left;
+    }
+  }
+
+  td {
+    padding: 4px 2px;
+    text-align: center;
+    border-top: 1px solid rgba(0,0,0,0.04);
+
+    &:first-child {
+      text-align: left;
+    }
+  }
+}

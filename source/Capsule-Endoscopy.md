@@ -79,6 +79,85 @@ The results can also be summarized as statistical outputs for comparing the phen
 
 <!-- there is a table here -->
 
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Abnormal</th>
+      <th>Normal</th>
+      <th>p.overall</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>N=407</td>
+      <td>N=20828</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Centroid.X</td>
+      <td>369 (141)</td>
+      <td>319 (159)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>Centroid.Y</td>
+      <td>221 (87.6)</td>
+      <td>179 (89.6)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>Circularity</td>
+      <td>0.44 (0.16)</td>
+      <td>0.50 (0.16)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>Convexity</td>
+      <td>0.87 (0.06)</td>
+      <td>0.88 (0.07)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>Mean_blue</td>
+      <td>0.27 (0.01)</td>
+      <td>0.21 (0.03)</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <td>Mean_green</td>
+      <td>0.43 (0.02)</td>
+      <td>0.47 (0.05)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>Mean_red</td>
+      <td>0.30 (0.02)</td>
+      <td>0.31 (0.03)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>MAD_blue</td>
+      <td>1.94 (1.01)</td>
+      <td>1.85 (1.18)</td>
+      <td>0.093</td>
+    </tr>
+    <tr>
+      <td>MAD_green</td>
+      <td>1.78 (0.89)</td>
+      <td>1.61 (0.92)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>MAD_red</td>
+      <td>2.09 (1.08)</td>
+      <td>2.06 (1.37)</td>
+      <td>0.517</td>
+    </tr>
+  </tbody>
+</table>
+
 The intensities of the healthy and unusual tissues can be easily compared on such a graph where it is clear that the relative amounts of blue and green play an important role in differentiating the normal and abnormal structures.
 
 <span class="centered"><img src="images/capsule-endoscopy/ce-016.png"></span>
@@ -126,7 +205,10 @@ Check out our other demos to see how 4Quant can help you:
   <p><a href="#">Finding buildings and forests in Satellite Images</a></p>
 </div>
 
-## Acknowledgements
+
+<!-- Strange text -->
+
+<!-- ## Acknowledgements
 
 <div class="news">
   <p>Analysis powered by Spark Image Layer from 4Quant, Visualizations, Document Generation, and Maps provided by:</p>
@@ -181,3 +263,4 @@ Check out our other demos to see how 4Quant can help you:
   <p>A BibTeX entry for LaTeX users is</p>
   <p>@Manual{, title = {DiagrammeR: Create Graph Diagrams and Flowcharts Using R}, author = {Knut Sveidqvist and Mike Bostock and Chris Pettitt and Mike Daines and Andrei Kashcha and Richard Iannone}, year = {2015}, note = {R package version 0.7}, }</p>
 </div>
+ -->

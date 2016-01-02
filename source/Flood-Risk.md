@@ -32,7 +32,7 @@ Our tools enable large, complicated satellite imaging datasets to be processed e
 
 ### Example
 
-### Locate bodies of water in the image
+#### Locate bodies of water in the image
 
 Here we locate and segment the water for a single day in the following images.
 
@@ -162,7 +162,7 @@ This information can then be summarized by year to get a better idea of the most
   </tbody>
 </table>
 
-### Identify houses in image
+#### Identify houses in image
 
 <span class="code">
   SELECT feature FROM ( <br>
@@ -175,7 +175,7 @@ This information can then be summarized by year to get a better idea of the most
   <img src="images/flood-risk/fr-006.png">
 </div>
 
-### Identify the houses distance from the river
+#### Identify the houses distance from the river
 
 <span class="code">SELECT bd.pos,rv.distance FROM Buildings AS bd JOIN Distance(River) AS rv ON bd.pos = rv.pos</span>
 

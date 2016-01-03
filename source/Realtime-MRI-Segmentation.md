@@ -6,7 +6,7 @@ title: 'Improving Surgery and Radiotherapy with Real-time Analysis'
 
 # Improving Surgery and Radiotherapy with Real-time Analysis
 
-<div class="date">December 27, 2015 — 11 mins read</div>
+<div class="date">August 14, 2015</div>
 
 ## Static prescan images are a poor guide for treatment
 
@@ -74,14 +74,14 @@ With cloud-integration and Big Data-based frameworks, even handling an entire ci
 
 ### Processing the Data
 
-Once the cluster has been comissioned and you have the StreamingSparkContext called `ssc` (automatically provided in [Databricks Cloud or Zeppelin](https://databricks.com/product/databricks)), the data can be loaded using the Spark Image Layer. Since we are using real-time analysis, we acquire the images from a streaming source.
+Once the cluster has been comissioned and you have the StreamingSparkContext called `ssc` (automatically provided in [Databricks Cloud](https://databricks.com/product/databricks) or [Zeppelin](http://zeppelin.incubator.apache.org/)), the data can be loaded using the Spark Image Layer. Since we are using real-time analysis, we acquire the images from a streaming source.
 
 <span class="code">
   val mriScanner = MedicalCameraReceiver("https://mri-scanner-8091")<br/>
   val metaImageStream = ssc.receiverStream(mriScanner)
 </span>
 
-Although we execute the command on one machine, the analysis will be distributed over the entire set of cluster resources available to ssc. To further process the images, we can take advantage of the rich set of functionality built into Spark Image Layer. The entire pipeline can then be started to run in real-time on all the new images as they stream in. If the tasks become more computationally intensive, then the computing power can be scaled up and down elastically using on-premise or cloud-based machines based on the regulatory nature of the environment.
+Although we execute the command on one machine, the analysis will be distributed over the entire set of cluster resources available to `ssc`. To further process the images, we can take advantage of the rich set of functionality built into Spark Image Layer. The entire pipeline can then be started to run in real-time on all the new images as they stream in. If the tasks become more computationally intensive, then the computing power can be scaled up and down elastically using on-premise or cloud-based machines based on the regulatory nature of the environment.
 
 ## Learn More
 
@@ -89,94 +89,37 @@ Although we execute the command on one machine, the analysis will be distributed
 
 Check out our other use-cases to see how *4Quant* can help you
 
-### Medicine
+#### Medicine
 
-<div class="news">
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">Planning surgery and radiotherapy with real time segmentations</a>
-  </p>
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">Segmenting organs from archived chest CT images</a>
-  </p>
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">Finding lesions in Capsule Based Endoscopy</a>
-  </p>
-</div>
+* [Planning surgery and radiotherapy with real time segmentations](http://4quant.com/Realtime-MRI-Segmentation)
+* [Segmenting organs from archived chest CT images](http://4quant.com/Organ-Segmentation/)
+* [Finding lesions in Capsule Based Endoscopy](http://4quant.com/Capsule-Endoscopy)
 
-### Geographic Information Systems
+#### Geographic Information Systems
 
-<div class="news">
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">Calculating Flood Risk for Insurance Companies</a>
-  </p>
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">Counting Cars in Satellite Images</a>
-  </p>
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">Finding buildings and forests in Satellite Images</a>
-  </p>
-</div>
+* [Calculating Flood Risk for Insurance Companies](http://4quant.com/Flood-Risk)
+* [Counting Cars in Satellite Images](http://4quant.com/countingcarsdemo)
+* [Finding buildings and forests in Satellite Images](http://4quant.com/geospatialdemo/)
 
-### Surveillance
+#### Surveillance
 
-<div class="news">
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">Count people from drone footage</a>
-  </p>
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">Finding criminals with traffic cameras</a>
-  </p>
-</div>
+* [Count people from drone footage](http://4quant.com/Drone-People-Counting)
+* [Finding criminals with traffic cameras](http://4quant.com/Pursuing-Criminals/)
 
-### Real-time QA
+#### Real-time QA
 
-<div class="news">
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">Check train tracks in real time</a>
-  </p>
-</div>
+* [Check train tracks in real time](http://4quant.com/Railway-Check)
 
-### Fun
+#### Fun
 
-<div class="news">
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">Untangling the flood of Online Dating</a>
-  </p>
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">Quantitative Image Search Machine</a>
-  </p>
-</div>
+* [Untangling the flood of Online Dating](http://4quant.com/Online-Dating)
+* [Quantitative Image Search Machine](http://kmader.shinyapps.io/SearchMachineDemo)
 
-## Technical Presentations
+### Technical Presentations
 
 To find out more about the technical aspects of our solution, check out our presentation at:
 
-<div class="news">
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">Spark Summit or watch the video.</a>
-  </p>
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">Synchrotron Radiation Instrumentation 2015</a>
-  </p>
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">ICTMS 2015</a>
-  </p>
-  <div>December 27 2015</div>
-  <p>
-    <a href="#">LifeScienceForumBasel 2015</a>
-  </p>
-</div>
+* [Spark Summit](http://4quant.com/spark-east-2015) or watch the [video](https://www.youtube.com/watch?v=ohR_y7HZaHA&index=10&list=PL-x35fyliRwiy50Ud2ltPx8_yA4H34ppJ).
+* [Synchrotron Radiation Instruementation 2015](http://4quant.com/SRI2015)
+* [ICTMS 2015](http://4quant.com/ICTMS2015)
+* [LifeScienceForumBasel 2015](http://4quant.com/LSFB2015)

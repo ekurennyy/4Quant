@@ -289,7 +289,9 @@ code {
 }
 
 img {
-  width: 100%;
+  display: block;
+  margin: 5px auto;
+  max-width: 100%;
 }
 
 .table {
@@ -319,11 +321,6 @@ img {
   padding: .5em;
   margin: 2em 1em 1em 1em;
   overflow-x: auto;
-}
-
-.centered-image {
-  text-align: center;
-  text-indent: 0;
 }
 
 .half-width-image {

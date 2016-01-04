@@ -16,13 +16,13 @@ In a wide range of crimes from grand theft auto to child abduction, it is import
 
 Traffic cameras are in wide-spread use for monitoring the movement of cars and identifying problems. The information from these cameras is rich and the combination of an entire network of images can reconstruct the movements of a single vehicle.
 
-<div class="centered-image"><img src="images/pursuing-criminals/pc-001.png"></div>
+<img src="images/pursuing-criminals/pc-001.png">
 
 The image data on their own are however difficult to process and particularly examining an entire network has typically required hundreds of expensive employees to hand screen the images (approximately 2 per employee). Electronic solutions while existant are typically inflexible, and poorly scalable to the types of problems needed for real-time ad-hoc analysis.
 
 ### Real-time image processing
 
-<div class="centered-image"><img src="images/pursuing-criminals/pc-002.png"></div>
+<img src="images/pursuing-criminals/pc-002.png">
 
 Using our 4Quant SQL, it is now possible to process these streams in a flexible scalable manner to query the live stream of images as if they were all in a database.
 
@@ -84,36 +84,34 @@ The final step is to identify the license plate number and compare it to the [AS
 
 The first question is how the data can be processed. The basic work is done by a simple workflow on top of our Spark Image Layer. This abstracts away the complexities of cloud computing and distributed analysis. You focus only on the core task of image processing.
 
-<div class="centered-image"><img src="images/pursuing-criminals/pc-008.svg" style="width: 40%;"></div>
+<img src="images/pursuing-criminals/pc-008.svg" style="width: 40%;">
 
 Beyond a single camera, our system scales linearly to multiple cameras and can distribute this computation across many computers to keep the computation real-time.
 
-<div class="centered-image"><img src="images/pursuing-criminals/pc-009.svg"></div>
+<img src="images/pursuing-criminals/pc-009.svg">
 
 With cloud-integration and *Big Data*-based frameworks, even handling an entire city network with 100s of drones and cameras running continuously is an easy task without worrying about networks, topology, or fault-tolerance. Below is an example for 30 traffic cameras where the tasks are seamlessly, evenly divided among 50 different computers.
 
-<div class="centered-image"><img src="images/pursuing-criminals/pc-010.svg"></div>
+<img src="images/pursuing-criminals/pc-010.svg">
 
 ### What?
 
 The images which are collected by the traffic cameras at rate of 30 frames per second contain substantial dynamic information on not only cars, but buildings, landscapes, and people. The first basic task is the segmentation of the people which can provide information on their number, movement, and behavior
 
-<div class="half-width-image"><img src="images/pursuing-criminals/pc-011.png"></div>
+<div class="half-width-image"><img src="images/pursuing-criminals/pc-011.png">
 
 The segmented image above can be transformed into quantitative metrics at each time point. These metrics can then be processed to extract relevant quality assessment information for the tracks.
 
-<div class="centered-image"><img src="images/pursuing-criminals/pc-012.png"></div>
+<img src="images/pursuing-criminals/pc-012.png">
 
 The data can then be broken down into small scenes where the number and flow of cars in each grouping can be evaluated.
 
-<div class="centered-image">
-  <img src="images/pursuing-criminals/pc-013.png">
-  <img src="images/pursuing-criminals/pc-014.png">
-</div>
+<img src="images/pursuing-criminals/pc-013.png">
+<img src="images/pursuing-criminals/pc-014.png">
 
 The data can also be smoothed to show more clearly trends and car counts on a single image.
 
-<div class="centered-image"><img src="images/pursuing-criminals/pc-015.png"></div>
+<img src="images/pursuing-criminals/pc-015.png">
 
 ## Technical Aspects
 

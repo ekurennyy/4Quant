@@ -18,7 +18,7 @@ Modern dating platforms have drastically increased the number of possibilities f
 
 Within each face are millions of possible metrics ranging from nostril size to eye spacing which collectively fit together to define your own version of beauty. Quantitative image analytics can be used to extract these metrics from millions of images in seconds and help filter out the riff-raff and keep only the desired results.
 
-<div class="centered-image"><img src="images/online-dating/od-001.png"></div>
+<img src="images/online-dating/od-001.png">
 
 <span class="code">SELECT Winking=TRUE AND HAIR_COLOR = "black"</span>
 
@@ -40,11 +40,11 @@ More importantly than a single query, is the ability to perform queries on compl
 The first question is how the data can be processed. The basic work is done by a simple workflow on top of our Spark Image Layer. This abstracts away the complexities of cloud computing and distributed analysis. You focus only on the core task of image processing.
 
 
-<div class="centered-image"><img src="images/online-dating/od-007.svg" style="width: 40%;"></div>
+<img src="images/online-dating/od-007.svg" style="width: 40%;">
 
 The true value of such a scalable system is not in the single analysis, but in the ability to analyze hundreds, thousands, and even millions of samples at the same time.
 
-<div class="centered-image"><img src="images/online-dating/od-008.svg"></div>
+<img src="images/online-dating/od-008.svg">
 
 With cloud-integration and *Big Data*-based frameworks, even handling an entire city network with 100s of drones and cameras running continuously is an easy task without worrying about networks, topology, or fault-tolerance.
 
@@ -78,7 +78,7 @@ With the ability to segment and analyse faces and features in huge collections o
   )
 </span>
 
-<div class="centered-image"><img src="images/online-dating/od-013.png"></div>
+<img src="images/online-dating/od-013.png">
 
 ### Machine Learning
 
@@ -86,7 +86,7 @@ The quantitatively meaningful data can then be used to train machine learning al
 
 Here we show a simple decision tree trained to identify good and bad on the basis of color, position, texture and shape.
 
-<div class="centered-image"><img src="images/online-dating/od-014.png"></div>
+<img src="images/online-dating/od-014.png">
 
 Furthermore the ability to parallelize and scale means thousands to millions of images and profiles can be analyzed at the same time to learn even more about your preferences.
 

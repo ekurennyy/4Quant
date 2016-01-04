@@ -56,7 +56,7 @@ The data can also be processed over months even years worth of old images to cha
       DATE BETWEEN 4-8-2000 AND 4-8-2015
 </span>
 
-<div class="centered-image"><img src="images/flood-risk/fr-004.png"></div>
+<img src="images/flood-risk/fr-004.png">
 
 This information can then be summarized by year to get a better idea of the most extreme cases from a large pool
 
@@ -68,7 +68,7 @@ This information can then be summarized by year to get a better idea of the most
       GROUP BY DATE.YEAR <br>
 </span>
 
-<div class="centered-image"><img src="images/flood-risk/fr-005.png"></div>
+<img src="images/flood-risk/fr-005.png">
 
 | year | min.area  | max.area  |
 | ---  |    ---    |    ---    |
@@ -111,7 +111,7 @@ This information can then be summarized by year to get a better idea of the most
   <img src="images/flood-risk/fr-006.png">
 </div>
 
-<div class="centered-image"><img src="images/flood-risk/fr-008.png"></div>
+<img src="images/flood-risk/fr-008.png">
 
 Or an interactive map for more exact examination:
 
@@ -119,17 +119,17 @@ Or an interactive map for more exact examination:
 
 Furthermore the data can be analyzed using standard tools like Excel, R, or Matlab for further quantifying and modeling of the risk.
 
-<div class="centered-image"><img src="images/flood-risk/fr-009.png"></div>
+<img src="images/flood-risk/fr-009.png">
 
 A more detailed distribution which allows us to see that the larger more expensive buildings (the category furthest on the right) are preferentially located close to the river. This could be a major concern for future risks.
 
-<div class="centered-image"><img src="images/flood-risk/fr-010.png"></div>
+<img src="images/flood-risk/fr-010.png">
 
 ## How
 
 There are two interfaces available the *data consumer* and the *data scientist*.
 
-<div class="centered-image"><img src="images/flood-risk/fr-011.png"></div>
+<img src="images/flood-risk/fr-011.png">
 
 * For the **data consumer** There interface is SQL console (JDBC-compatible), which can be examined with ad-hoc queries as shown above. The data can be combined and integrated with other sources using standard SQL operations and the full class of 4Quant’s imaging tools are available as integrated functions.
 * For the **data scientist** There is a Scala/Java and Python interface. With this interface new code can be compiled and execute to process the images and other data. Anything from new image processing functions (denoising, feature recognition, optical character recognition) to further analyses (covariance matrix-based identification) can easily be integrated in our high-throughput pipeline.
@@ -138,15 +138,15 @@ There are two interfaces available the *data consumer* and the *data scientist*.
 
 The first question is how the data can be processed. The basic work is done by a simple workflow on top of our Spark Image Layer. This abstracts away the complexities of cloud computing and distributed analysis. You focus only on the core task of image processing.
 
-<div class="centered-image"><img src="images/flood-risk/fr-012.svg" style="width: 40%;"></div>
+<img src="images/flood-risk/fr-012.svg" style="width: 40%;">
 
 Beyond a single train, our system scales linearly to multiple datasources and petabytes of information across hundreds of computers to keep the computation real-time.
 
-<div class="centered-image"><img src="images/flood-risk/fr-013.svg"></div>
+<img src="images/flood-risk/fr-013.svg">
 
 With cloud-integration and Big Data-based frameworks, even handling an entire satellite network with 100s of satellites continuously collecting data is an easy task without worrying about networks, topology, or fault-tolerance. Below is an example for 30 different map sources where the tasks are seamlessly, evenly divided among 50 different machines.
 
-<div class="centered-image"><img src="images/flood-risk/fr-014.svg"></div>
+<img src="images/flood-risk/fr-014.svg">
 
 ### Processing the Data
 

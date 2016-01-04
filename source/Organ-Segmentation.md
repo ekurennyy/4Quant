@@ -21,7 +21,7 @@ The graph below shows the same patient with (left) and without (right) precision
 * The *precision case* is **clear**, the patient’s liver is definitely larger than it should be.
 * The *standard medicine* is **inconclusive**, a bit larger, but nothing definitive.
 
-<div class="centered-image"><img src="images/indexing-001.png"></div>
+<img src="images/indexing-001.png">
 
 Despite recent boosts in popularity, both personalized and precision medicine are still not part of the standard diagnosis process for many diseases.
 
@@ -70,7 +70,7 @@ SELECT pt.Age,EstimateBoneMineralDensity(cs.BoneImage) as BMD<br/>
   FROM PatientDatabase AS pt JOIN ChestSeq AS cs ON pt.id == cs.PatientId
 </span>
 
-<div class="centered-image"><img src="images/indexing-007.png"></div>
+<img src="images/indexing-007.png">
 
 ### What else?
 
@@ -80,7 +80,7 @@ Our *Image Query and Analysis Engine* runs in the cloud or locally and is used a
 SELECT * FROM ChestSeq GROUP BY Tissue.Type
 </span>
 
-<div class="centered-image"><img src="images/indexing-008.png"></div>
+<img src="images/indexing-008.png">
 
 
 | Organ | Subdivisions | Size | Density | Granularity | Contrast |
@@ -114,7 +114,7 @@ The quantitatively meaningful data can then be used to train machine learning al
 
 Here we show a simple decision tree trained to identify lesions using color, position, texture and shape.
 
-<div class="centered-image"><img src="images/indexing-009.png"></div>
+<img src="images/indexing-009.png">
 
 Furthermore the ability to parallelize and scale means thousands to millions of videos can be analyzed at the same time to learn even more about the structures of the digestive track and identify new possibilities for diagnosis.
 
@@ -122,11 +122,11 @@ Furthermore the ability to parallelize and scale means thousands to millions of 
 
 The first question is how the data can be processed. The basic work is done by a simple workflow on top of our Spark Image Layer. This abstracts away the complexities of cloud computing and distributed analysis. You focus only on the core task of image processing.
 
-<div class="centered-image"><img src="images/indexing-010.svg" style="width:40%"/></div>
+<img src="images/indexing-010.svg" style="width:40%"/>
 
 The true value of such a scalable system is not in the single analysis, but in the ability to analyze hundreds, thousands, and even millions of samples at the same time.
 
-<div class="centered-image"><img src="images/indexing-011.svg"></div>
+<img src="images/indexing-011.svg">
 
 With cloud-integration and *Big Data*-based frameworks, even handling an entire city network with 100s of drones and cameras running continuously is an easy task without worrying about networks, topology, or fault-tolerance.
 

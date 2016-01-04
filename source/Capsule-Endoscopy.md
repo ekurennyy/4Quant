@@ -18,7 +18,7 @@ The input videos can be 24 hours or longer so for this example we just show a sm
 
 ### Sifting through old data
 
-<div class="centered-image"><img src="images/capsule-endoscopy/ce-001.png"></div>
+<img src="images/capsule-endoscopy/ce-001.png">
 
 ### Filter out samples with unique features
 
@@ -40,11 +40,11 @@ The input videos can be 24 hours or longer so for this example we just show a sm
 
 The first question is how the data can be processed. The basic work is done by a simple workflow on top of our Spark Image Layer. This abstracts away the complexities of cloud computing and distributed analysis. You focus only on the core task of image processing.
 
-<div class="centered-image"><img src="images/capsule-endoscopy/ce-007.svg" style="width:40%"></div>
+<img src="images/capsule-endoscopy/ce-007.svg" style="width:40%">
 
 The true value of such a scalable system is not in the single analysis, but in the ability to analyze hundreds, thousands, and even millions of samples at the same time.
 
-<div class="centered-image"><img src="images/capsule-endoscopy/ce-008.svg"></div>
+<img src="images/capsule-endoscopy/ce-008.svg">
 
 With cloud-integration and Big Data-based frameworks, even handling an entire city network with 100s of drones and cameras running continuously is an easy task without worrying about networks, topology, or fault-tolerance.
 
@@ -52,28 +52,28 @@ With cloud-integration and Big Data-based frameworks, even handling an entire ci
 
 The images which are collected by the capsule continuously and converted into a video. We can then analyze each frame of the video to identify interesting sites.
 
-<div class="centered-image"><img src="images/capsule-endoscopy/ce-009.png"></div>
+<img src="images/capsule-endoscopy/ce-009.png">
 
 The first step in this identification is to segment the frame into so-called superpixels, a standard technique for grouping similar regions together and makes examining textures and other parameters much easier.
 
-<div class="centered-image"><img src="images/capsule-endoscopy/ce-010.png"></div>
-<div class="centered-image"><img src="images/capsule-endoscopy/ce-011.png"></div>
+<img src="images/capsule-endoscopy/ce-010.png">
+<img src="images/capsule-endoscopy/ce-011.png">
 
 The data can be then analyzed in more detail to extract quantitatively meaningful metrics on the structure of the tissue.
 
-<div class="centered-image"><img src="images/capsule-endoscopy/ce-012.png"></div>
+<img src="images/capsule-endoscopy/ce-012.png">
 
 From all of the images general trends can be identified by examining all of the phenotypes and trying to identify the important ones for differentiating disease. The following figure shows the relationship between shape (of the super-pixels) and the healthy segments as pink dots and the abnormal as blue dots. The shape and position provide some differentation but are not definitive enough to clearly distinguish the two groups.
 
-<div class="centered-image"><img src="images/capsule-endoscopy/ce-013.png"></div>
+<img src="images/capsule-endoscopy/ce-013.png">
 
 Here we show the relative color components for each channel (red, green, and blue) and how they are related to the tissue labeled as healthy and abnormal.
 
-<div class="centered-image"><img src="images/capsule-endoscopy/ce-014.png"></div>
+<img src="images/capsule-endoscopy/ce-014.png">
 
 Here rather than showing the relative intensities we show the median absolute deviation which is better at characterizing the variation inside each structure.
 
-<div class="centered-image"><img src="images/capsule-endoscopy/ce-015.png"></div>
+<img src="images/capsule-endoscopy/ce-015.png">
 
 The results can also be summarized as statistical outputs for comparing the phenotypes values for the groups of normal and abnormal tissue.
 
@@ -94,7 +94,7 @@ The results can also be summarized as statistical outputs for comparing the phen
 
 The intensities of the healthy and unusual tissues can be easily compared on such a graph where it is clear that the relative amounts of blue and green play an important role in differentiating the normal and abnormal structures.
 
-<div class="centered-image"><img src="images/capsule-endoscopy/ce-016.png"></div>
+<img src="images/capsule-endoscopy/ce-016.png">
 
 ### Machine Learning
 
@@ -102,11 +102,11 @@ The quantitatively meaningful data can then be used to train machine learning al
 
 Here we show a simple decision tree trained to identify lesions using color, position, texture and shape.
 
-<div class="centered-image"><img src="images/capsule-endoscopy/ce-017.png"></div>
+<img src="images/capsule-endoscopy/ce-017.png">
 
 The subtree responsible for color-based analysis. Given a large set of data the trees can be more robustly tested and improved to provide the highest sensitivity and specificity criteria.
 
-<div class="centered-image"><img src="images/capsule-endoscopy/ce-018.png" style="width:60%"></div>
+<img src="images/capsule-endoscopy/ce-018.png" style="width:60%">
 
 Furthermore the ability to parallelize and scale means thousands to millions of videos can be analyzed at the same time to learn even more about the structures of the digestive track and identify new possibilities for diagnosis.
 

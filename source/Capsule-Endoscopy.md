@@ -77,86 +77,20 @@ Here rather than showing the relative intensities we show the median absolute de
 
 The results can also be summarized as statistical outputs for comparing the phenotypes values for the groups of normal and abnormal tissue.
 
-<!-- there is a table here -->
 
-<table class="styled-table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Abnormal</th>
-      <th>Normal</th>
-      <th>p.overall</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td></td>
-      <td>N=407</td>
-      <td>N=20828</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Centroid.X</td>
-      <td>369 (141)</td>
-      <td>319 (159)</td>
-      <td>&lt;0.001</td>
-    </tr>
-    <tr>
-      <td>Centroid.Y</td>
-      <td>221 (87.6)</td>
-      <td>179 (89.6)</td>
-      <td>&lt;0.001</td>
-    </tr>
-    <tr>
-      <td>Circularity</td>
-      <td>0.44 (0.16)</td>
-      <td>0.50 (0.16)</td>
-      <td>&lt;0.001</td>
-    </tr>
-    <tr>
-      <td>Convexity</td>
-      <td>0.87 (0.06)</td>
-      <td>0.88 (0.07)</td>
-      <td>&lt;0.001</td>
-    </tr>
-    <tr>
-      <td>Mean_blue</td>
-      <td>0.27 (0.01)</td>
-      <td>0.21 (0.03)</td>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <td>Mean_green</td>
-      <td>0.43 (0.02)</td>
-      <td>0.47 (0.05)</td>
-      <td>&lt;0.001</td>
-    </tr>
-    <tr>
-      <td>Mean_red</td>
-      <td>0.30 (0.02)</td>
-      <td>0.31 (0.03)</td>
-      <td>&lt;0.001</td>
-    </tr>
-    <tr>
-      <td>MAD_blue</td>
-      <td>1.94 (1.01)</td>
-      <td>1.85 (1.18)</td>
-      <td>0.093</td>
-    </tr>
-    <tr>
-      <td>MAD_green</td>
-      <td>1.78 (0.89)</td>
-      <td>1.61 (0.92)</td>
-      <td>&lt;0.001</td>
-    </tr>
-    <tr>
-      <td>MAD_red</td>
-      <td>2.09 (1.08)</td>
-      <td>2.06 (1.37)</td>
-      <td>0.517</td>
-    </tr>
-  </tbody>
-</table>
+|             | Abnormal    | Normal      | p.overall |
+|   ---       | ---         | ---         | ---       |
+|             | N=407       | N=20828     |           |
+| Centroid.X  | 369 (141)   | 319 (159)   | <0.001    |
+| Centroid.Y  | 221 (87.6)  | 179 (89.6)  | <0.001    |
+| Circularity | 0.44 (0.16) | 0.50 (0.16) | <0.001    |
+| Convexity   | 0.87 (0.06) | 0.88 (0.07) | <0.001    |
+| Mean_blue   | 0.27 (0.01) | 0.21 (0.03) | 0.000     |
+| Mean_green  | 0.43 (0.02) | 0.47 (0.05) | <0.001    |
+| Mean_red    | 0.30 (0.02) | 0.31 (0.03) | <0.001    |
+| MAD_blue    | 1.94 (1.01) | 1.85 (1.18) | 0.093     |
+| MAD_green   | 1.78 (0.89) | 1.61 (0.92) | <0.001    |
+| MAD_red     | 2.09 (1.08) | 2.06 (1.37) | 0.517     |
 
 The intensities of the healthy and unusual tissues can be easily compared on such a graph where it is clear that the relative amounts of blue and green play an important role in differentiating the normal and abnormal structures.
 

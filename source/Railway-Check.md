@@ -74,15 +74,15 @@ With many train-mounted cameras the entire network can then be analyzed in real-
 
 Once the cluster has been comissioned and you have the StreamingSparkContext called `ssc` (automatically provided in [Databricks Cloud](https://databricks.com/product/databricks) or [Zeppelin](http://zeppelin.incubator.apache.org/), the data can be loaded using the Spark Image Layer. Since we are using real-time analysis, we acquire the images from a streaming source
 
-<span class="code">
+<div class="code">
   val trainCam1 = TrainCameraReceiver("sbb://train-3275") <br>
   val trainCam2 = TrainCameraReceiver("sbb://train-3187") <br>
   val metaImageStream = ssc.receiverStream(trainCam1 ++ trainCam2)
-</span>
+</div>
 
 Although we execute the command on one machine, the analysis will be distributed over the entire set of cluster resources available to `ssc`. To further process the images, we can take advantage of the rich set of functionality built into Spark Image Layer
 
-<span class="code">
+<div class="code">
   def identifyTracks(time: Double, pos: GeoPos, inImage: Img[Byte]) = { <br>
     // Run the image processing steps on all images <br>
     val rawTrack = inImage. <br>
@@ -98,11 +98,11 @@ Although we execute the command on one machine, the analysis will be distributed
   } <br>
   // apply the operation to all images as they come in <br>
   val trackStream = metaImageStream.map(identifyTracks)
-</span>
+</div>
 
 The detailed information with time, position and track data can then be compared to reference values to find changes and alert the user
 
-<span class="code">
+<div class="code">
   trackStream.foreachRDD{ <br>
     trackStream => <br>
       val changePoints = trackStream. <br>
@@ -118,6 +118,6 @@ The detailed information with time, position and track data can then be compared
             sendAlert(newPt.pos+" at "+newPt.time+" has changed by more then 5%") <br>
         ) <br>
   }
-</span>
+</div>
 
 The entire pipeline can then be started to run in real-time on all the new images as they stream in. If the tasks become more computationally intensive, then the computing power can be scaled up and down elastically.

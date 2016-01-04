@@ -36,11 +36,11 @@ Our tools enable large, complicated satellite imaging datasets to be processed e
 
 Here we locate and segment the water for a single day in the following images.
 
-<span class="code">
+<div class="code">
   SELECT feature FROM ( <br>
     SELECT SEGMENT_WATER(image.blue) FROM SatelliteImages  <br>
     ) WHERE AREA > 1000m^2 AND DATE IS 4-8-2015
-</span>
+</div>
 
 <div class="half-width-image">
   <img src="images/flood-risk/fr-001.png">
@@ -49,24 +49,24 @@ Here we locate and segment the water for a single day in the following images.
 
 The data can also be processed over months even years worth of old images to characterize the standard changes in water levels.
 
-<span class="code">
+<div class="code">
   SELECT DATE,AREA FROM ( <br>
     SELECT SEGMENT_WATER(image.blue) FROM SatelliteImages  <br>
     ) WHERE AREA > 1000m^2 AND  <br>
       DATE BETWEEN 4-8-2000 AND 4-8-2015
-</span>
+</div>
 
 <img src="images/flood-risk/fr-004.png">
 
 This information can then be summarized by year to get a better idea of the most extreme cases from a large pool
 
-<span class="code">
+<div class="code">
   SELECT DATE.YEAR,MIN(AREA),MAX(AREA) FROM ( <br>
     SELECT SEGMENT_WATER(image.blue) FROM SatelliteImages  <br>
     ) WHERE AREA > 1000m^2 AND  <br>
       DATE BETWEEN 4-8-2000 AND 4-8-2015 <br>
       GROUP BY DATE.YEAR <br>
-</span>
+</div>
 
 <img src="images/flood-risk/fr-005.png">
 
@@ -91,11 +91,11 @@ This information can then be summarized by year to get a better idea of the most
 
 #### Identify houses in image
 
-<span class="code">
+<div class="code">
   SELECT feature FROM ( <br>
     SELECT SEGMENT_BUILDING(image) FROM SatelliteImages  <br>
     ) WHERE SIZE > 100m^2 AND DATE IS 4-8-2014 <br>
-</span>
+</div>
 
 <div class="half-width-image">
   <img src="images/flood-risk/fr-001.png">
@@ -104,7 +104,7 @@ This information can then be summarized by year to get a better idea of the most
 
 #### Identify the houses distance from the river
 
-<span class="code">SELECT bd.pos,rv.distance FROM Buildings AS bd JOIN Distance(River) AS rv ON bd.pos = rv.pos</span>
+<div class="code">SELECT bd.pos,rv.distance FROM Buildings AS bd JOIN Distance(River) AS rv ON bd.pos = rv.pos</div>
 
 <div class="half-width-image">
   <img src="images/flood-risk/fr-007.png">
@@ -152,9 +152,9 @@ With cloud-integration and Big Data-based frameworks, even handling an entire sa
 
 Once the cluster has been comissioned and you have the SparkContext called `sc` (automatically provided in [Databricks Cloud](https://databricks.com/product/databricks) or [Zeppelin](http://zeppelin.incubator.apache.org/), the data can be loaded using the Spark Image Layer. Since for this case we load the images from a private repository stored on Amazon’s S3 block storage (also compatible with local filesystems, Google Compute, IBM SoftLayer)
 
-<span class="code">
+<div class="code">
   val fullSatImage = sc.readTiledImage\[Double]("s3n://geo-images/esri-satimg/*/*.png",256,256).cache
-</span>
+</div>
 
 Although we execute the command on one machine, the analysis will be distributed over the entire set of cluster resources available to `sc`. To further process the images, we can take advantage of the rich set of functionality built into Spark Image Layer. Watch [our webinar](https://www.youtube.com/watch?v=TA_h0jY7iPc) to learn more.
 

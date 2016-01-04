@@ -16,29 +16,29 @@ The standard procedure for both radiotherapy and surgery involves making scans a
 
 The latest surgical suites and MRI technologies have made subsecond measurements a reality. These measurements are already being used to assist therapy, but the value is limited without the ability to process the images in real-time.
 
-<span class="code">SELECT Image as ChestCT FROM PatientImages WHERE Modality="CT" AND Region="Chest"</span>
+<div class="code">SELECT Image as ChestCT FROM PatientImages WHERE Modality="CT" AND Region="Chest"</div>
 <img src="images/mammo-001.gif" style="width:180px"/>
 
 ### Perform Segmentation
 
-<span class="code">SELECT CHEST_SEGMENTATION(Image) as ChestSeg FROM ChestCT</span>
+<div class="code">SELECT CHEST_SEGMENTATION(Image) as ChestSeg FROM ChestCT</div>
 <img src="images/mammo-002.gif" style="width:180px"/>
 
 ### Extract the heart since it is the most dose-sensitive
 
-<span class="code">SELECT HeartRegion FROM ChestSeq</span>
+<div class="code">SELECT HeartRegion FROM ChestSeq</div>
 
 <img src="images/mammo-003.gif" style="width:180px"/>
 
 ### Track the Position of the Heart
 
-<span class="code">SELECT CenterOfMass(roi) FROM HeartRegion GROUP BY time</span>
+<div class="code">SELECT CenterOfMass(roi) FROM HeartRegion GROUP BY time</div>
 
 <img src="images/mammo-004.png">
 
 It is also possible to create outlines from the structures which can then be used to update surgical plans, and provide information to the latest generation of devices which can then updating the treatment plan in real time.
 
-<span class="code">SELECT CreateOutlines(roi) FROM HeartRegion GROUP BY Organ</span>
+<div class="code">SELECT CreateOutlines(roi) FROM HeartRegion GROUP BY Organ</div>
 
 <img src="images/mammo-005.png">
 
@@ -76,10 +76,10 @@ With cloud-integration and Big Data-based frameworks, even handling an entire ci
 
 Once the cluster has been comissioned and you have the StreamingSparkContext called `ssc` (automatically provided in [Databricks Cloud](https://databricks.com/product/databricks) or [Zeppelin](http://zeppelin.incubator.apache.org/)), the data can be loaded using the Spark Image Layer. Since we are using real-time analysis, we acquire the images from a streaming source.
 
-<span class="code">
+<div class="code">
   val mriScanner = MedicalCameraReceiver("https://mri-scanner-8091")<br/>
   val metaImageStream = ssc.receiverStream(mriScanner)
-</span>
+</div>
 
 Although we execute the command on one machine, the analysis will be distributed over the entire set of cluster resources available to `ssc`. To further process the images, we can take advantage of the rich set of functionality built into Spark Image Layer. The entire pipeline can then be started to run in real-time on all the new images as they stream in. If the tasks become more computationally intensive, then the computing power can be scaled up and down elastically using on-premise or cloud-based machines based on the regulatory nature of the environment.
 

@@ -69,15 +69,15 @@ The data can also be smoothed to show more clearly trends and person counts on a
 
 Once the cluster has been comissioned and you have the *StreamingSparkContext* called `ssc` (automatically provided in [Databricks Cloud](https://databricks.com/product/databricks-cloud) or [Zeppelin](http://zeppelin.incubator.apache.org/)), the data can be loaded using the Spark Image Layer. Since we are using real-time analysis, we acquire the images from a streaming source
 
-<span class="code">
+<div class="code">
   val droneCam1 = TrainCameraReceiver("https://drone-8092") <br>
   val droneCam2 = TrainCameraReceiver("https://drone-8093") <br>
   val metaImageStream = ssc.receiverStream(trainCam1 ++ trainCam2)
-</span>
+</div>
 
 Although we execute the command on one machine, the analysis will be distributed over the entire set of cluster resources available to `ssc`. To further process the images, we can take advantage of the rich set of functionality built into Spark Image Layer
 
-<span class="code">
+<div class="code">
   def identifyPeople(time: Double, pos: GeoPos, inImage: Img[Byte]) = { <br>
     // Run the image processing steps on all images <br>
     val peopleOutlines = inImage. <br>
@@ -95,7 +95,7 @@ Although we execute the command on one machine, the analysis will be distributed
   } <br>
   // apply the operation to all images as they come in <br>
   val peopleStream = metaImageStream.map(identifyPeople)
-</span>
+</div>
 
 The entire pipeline can then be started to run in real-time on all the new images as they stream in. If the tasks become more computationally intensive, then the computing power can be scaled up and down elastically.
 

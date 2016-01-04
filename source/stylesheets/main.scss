@@ -249,7 +249,6 @@ header, nav {
   font-family: $alt-font-family;
   font-size: 2rem;
   text-decoration: none;
-  display: block;
 
   &:hover {
     text-decoration: none;
@@ -273,7 +272,6 @@ code {
 .claim {
   font-size: 0.70rem;
   text-transform: uppercase;
-
 }
 
 img {
@@ -283,15 +281,13 @@ img {
 }
 
 .code {
-  background-color: rgba(0,0,0,0.04);
-  font-size: .8em;
-  font-family: monospace;
-  display: block;
-  text-indent: 0;
-  font-family: 'Roboto Mono';
-  padding: .5em;
   margin: 2em 1em 1em 1em;
+  padding: .5em;
+  text-indent: 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: .8em;
   overflow-x: auto;
+  background-color: rgba(0,0,0,0.04);
 }
 
 .half-width-image {

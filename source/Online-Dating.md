@@ -20,7 +20,7 @@ Within each face are millions of possible metrics ranging from nostril size to e
 
 <img src="images/online-dating/od-001.png">
 
-<span class="code">SELECT Winking=TRUE AND HAIR_COLOR = "black"</span>
+<div class="code">SELECT Winking=TRUE AND HAIR_COLOR = "black"</div>
 
 <div class="half-width-image"><img src="images/online-dating/od-002.gif"></div>
 
@@ -70,13 +70,13 @@ The edges can then be used to generate features on the original face to use as t
 
 With the ability to segment and analyse faces and features in huge collections of images without processing beforehand, the possibilities are endless. Of particlar interest is the ability to investigate specific metrics as they related to relationship success, for example eye separation and number of *likes*.
 
-<span class="code">
+<div class="code">
   SELECT CORR2(left_eye.x-right_eye.x,likes) FROM ( <br>
     SELECT face.left_eye.x,face.right_eye.x,likes FROM ( <br>
       SELECT SEGMENT_FACE(profile_image) AS face,likes FROM USER <br>
     ) <br>
   )
-</span>
+</div>
 
 <img src="images/online-dating/od-013.png">
 

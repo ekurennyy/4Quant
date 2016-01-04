@@ -116,11 +116,11 @@ Furthermore the ability to parallelize and scale means thousands to millions of 
 
 Once the cluster has been comissioned and you have the SparkContext called `sc` (automatically provided in [Databricks Cloud](https://databricks.com/product/databricks) or [Zeppelin](http://zeppelin.incubator.apache.org/), the data can be loaded using the Spark Image Layer. Since we are using real-time analysis, we acquire the images from an archive of images and create a database out of the results.
 
-<span class="code">
+<div class="code">
   val iqaeDB = sc.createImageDatabase("s3n://capsule-endoscopy/scans/*/*.avi",<br>
   patientInfo="jdbc://oracle-db/PATIENTS") <br>
   iqaeDB.registerImageTable("Endoscopy")
-</span>
+</div>
 
 Although we execute the command on one machine, the analysis will be distributed over the entire set of cluster resources available to `sc`. To further process the images, we can take advantage of the rich set of functionality built into Spark Image Layer.
 

@@ -39,15 +39,15 @@ These archives of images contain exactly the sort of information required to mak
 
 A hospital database with thousands of patient images can be quickly screening for the right type of images.
 
-<span class="code">SELECT Image as ChestCT FROM PatientImages WHERE Modality="CT" AND Region="Chest"</span>
+<div class="code">SELECT Image as ChestCT FROM PatientImages WHERE Modality="CT" AND Region="Chest"</div>
 
 <div class="half-width-image"><img src="images/indexing-003.gif"></div>
 
 ### Perform Segmentation
 
-<span class="code">
+<div class="code">
 SELECT CHEST_SEGMENTATION(Image) as ChestSeg FROM ChestCT
-</span>
+</div>
 
 <div class="half-width-image"><img src="images/indexing-004.gif"></div>
 
@@ -57,18 +57,18 @@ SELECT CHEST_SEGMENTATION(Image) as ChestSeg FROM ChestCT
 
 ### Extract the bones
 
-<span class="code">
+<div class="code">
 SELECT BoneImage FROM ChestSeq
-</span>
+</div>
 
 <div class="half-width-image"><img src="images/indexing-006.gif"></div>
 
 ### Extract Meaningful Information
 
-<span class="code">
+<div class="code">
 SELECT pt.Age,EstimateBoneMineralDensity(cs.BoneImage) as BMD<br/>
   FROM PatientDatabase AS pt JOIN ChestSeq AS cs ON pt.id == cs.PatientId
-</span>
+</div>
 
 <img src="images/indexing-007.png">
 
@@ -76,9 +76,9 @@ SELECT pt.Age,EstimateBoneMineralDensity(cs.BoneImage) as BMD<br/>
 
 Our *Image Query and Analysis Engine* runs in the cloud or locally and is used as Software as a Service to ensure you are always working with the latest generation of algorithms and tools. Once the image data is inside the possibilities are endless.
 
-<span class="code">
+<div class="code">
 SELECT * FROM ChestSeq GROUP BY Tissue.Type
-</span>
+</div>
 
 <img src="images/indexing-008.png">
 
@@ -118,11 +118,11 @@ With cloud-integration and Big Data-based frameworks, even handling an entire ci
 
 Once the cluster has been comissioned and you have the SparkContext called sc (automatically provided in Databricks Cloud or Zeppelin), the data can be loaded using the Spark Image Layer. Since we are using real-time analysis, we acquire the images from an archive of images and create a database out of the results.
 
-<span class="code">
+<div class="code">
 val iqaeDB = sc.createImageDatabase("s3n://chest-ct/scans/*/*.avi", <br/>
   patientInfo="jdbc://oracle-db/PATIENTS")<br/>
   iqaeDB.registerImageTable("PatientImages")<br/>
-</span>
+</div>
 
 Although we execute the command on one machine, the analysis will be distributed over the entire set of cluster resources available to sc. To further process the images, we can take advantage of the rich set of functionality built into Spark Image Layer.
 

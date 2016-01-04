@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>4Quant | Indexing Medicine with Smart Image Databases</title>
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <link href="stylesheets/main.css" rel="stylesheet" />
+    <script src="javascripts/main.js"></script>
+    <script>
+      SmartUnderline.init({
+      "location": ""
+      });
+    </script>
+  </head>
+  <body>
+    <section>
+      <header>
+        <div class="brand">
+          <div class="brand-name"><a href="/"><strong>4Q</strong>uant</a></div>
+          <div class="claim"><a href="/">Big Image Analytics</a></div>
+        </div>
+      </header>
+    </section>
+    <main>
+      <section>
+        <h1 id="indexing-medicine-with-smart-image-databases">Indexing Medicine with Smart Image Databases</h1>
+
+<div class="date">December 27, 2015 — 11 mins read</div>
+
+<h2 id="anomaly-detection-in-patients-is-challenging-because-reference-values-are-vague">Anomaly detection in patients is challenging because reference values are vague</h2>
+
+<p>Identifying patients with enlarged livers is important for identifying hepatitis, systemic disease, and even chronic conditions like alcohol abuse. Oversized is, however, a very poorly defined term. What is normal? Currently medicine operates on the basis of painstaking, time-consuming studies made from relatively homogenous populations. Using this ruler means many sick patients are not identified.</p>
+
+<h2 id="precision-medicine-with-iqae">Precision Medicine with <em>IQAE</em></h2>
+
+<p>By combining large sets of information about patients together, finding outliers and treating patients can be much better matched to the individual background of that patients. Rather than comparing the patient to an old publication, they can be compared to a group matching their age, gender, and lifestyle.</p>
+
+<p>The graph below shows the same patient with (left) and without (right) precision medicine.</p>
+
+<ul>
+  <li>The precision case is <em>clear</em>, the patient’s liver is definitely larger than it should be.</li>
+  <li>The standard medicine is <em>inconclusive</em>, a bit larger, but nothing definitive.</li>
+</ul>
+
+<p><img src="images/indexing-001.png" /></p>
+
+<p>Despite recent boosts in popularity, both personalized and precision medicine are still not part of the standard diagnosis process for many diseases.</p>
+
+<h3 id="image-query-and-analysis-engine"><em>Image Query and Analysis Engine</em></h3>
+
+<div class="half-width-image"><img src="images/indexing-002.png" /></div>
+
+<p>Standard imaging modalities like thorax CT and MRI are commonly used to diagnose a number of different diseases. These images are normally examined once for a single specific diagnosis and then archived. Hospitals are required to archive a majority of patient imaging studies and scans for a minimum of 10 years. These essential data are just sitting unused on PACS, tapes, and other storage volumes.</p>
+
+<p>These archives of images contain exactly the sort of information required to make precision diagnoses, they are simply difficult to access.</p>
+
+<p><em>IQAE</em> is the key to unlocking the potential of this data and turning it from a burden into an asset. The data can be analyzed in a completely anonymized manner to obtain general, precise statistics as references against which to compare new patients. Additionally careful analysis of all data can reveal mistakes, missed diagnoses, and new potential high risk patients.</p>
+
+<h3 id="real-time-querying-of-images">Real-time Querying of Images</h3>
+
+<p>A hospital database with thousands of patient images can be quickly screening for the right type of images.</p>
+
+<div class="code">SELECT Image as ChestCT FROM PatientImages WHERE Modality="CT" AND Region="Chest"</div>
+
+<div class="half-width-image"><img src="images/indexing-003.gif" /></div>
+
+<h3 id="perform-segmentation">Perform Segmentation</h3>
+
+<div class="code">
+SELECT CHEST_SEGMENTATION(Image) as ChestSeg FROM ChestCT
+</div>
+
+<div class="half-width-image"><img src="images/indexing-004.gif" /></div>
+
+<h3 id="to-individual-organs">To individual organs</h3>
+
+<div class="half-width-image"><img src="images/indexing-005.gif" /></div>
+
+<h3 id="extract-the-bones">Extract the bones</h3>
+
+<div class="code">
+SELECT BoneImage FROM ChestSeq
+</div>
+
+<div class="half-width-image"><img src="images/indexing-006.gif" /></div>
+
+<h3 id="extract-meaningful-information">Extract Meaningful Information</h3>
+
+<div class="code">
+SELECT pt.Age,EstimateBoneMineralDensity(cs.BoneImage) as BMD<br />
+  FROM PatientDatabase AS pt JOIN ChestSeq AS cs ON pt.id == cs.PatientId
+</div>
+
+<p><img src="images/indexing-007.png" /></p>
+
+<h3 id="what-else">What else?</h3>
+
+<p>Our <em>Image Query and Analysis Engine</em> runs in the cloud or locally and is used as Software as a Service to ensure you are always working with the latest generation of algorithms and tools. Once the image data is inside the possibilities are endless.</p>
+
+<div class="code">
+SELECT * FROM ChestSeq GROUP BY Tissue.Type
+</div>
+
+<p><img src="images/indexing-008.png" /></p>
+
+<p>From all of the images general trends can be identified by examining all of the phenotypes and trying to identify the important ones for differentiating disease. The following figure shows the relationship between shape (of the super-pixels) and the healthy segments as pink dots and the abnormal as blue dots. The shape and position provide some differentation but are not definitive enough to clearly distinguish the two groups.</p>
+
+<p>Here we show the relative color components for each channel (red, green, and blue) and how they are related to the tissue labeled as healthy and abnormal.</p>
+
+<p>Here rather than showing the relative intensities we show the median absolute deviation which is better at characterizing the variation inside each structure.</p>
+
+<p>The results can also be summarized as statistical outputs for comparing the phenotypes values for the groups of normal and abnormal tissue.</p>
+
+<h3 id="machine-learning">Machine Learning</h3>
+
+<p>The quantitatively meaningful data can then be used to train machine learning algorithms (decision trees to SVM) in order to automatically high-light many of the interesting regions and label them as such, dratistically reducing the required time to analyze a single patient.</p>
+
+<p>Here we show a simple decision tree trained to identify lesions using color, position, texture and shape.</p>
+
+<p><img src="images/indexing-009.png" /></p>
+
+<p>Furthermore the ability to parallelize and scale means thousands to millions of videos can be analyzed at the same time to learn even more about the structures of the digestive track and identify new possibilities for diagnosis.</p>
+
+<h3 id="how">How?</h3>
+
+<p>The first question is how the data can be processed. The basic work is done by a simple workflow on top of our Spark Image Layer. This abstracts away the complexities of cloud computing and distributed analysis. You focus only on the core task of image processing.</p>
+
+<p><img src="images/indexing-010.svg" style="width:40%" /></p>
+
+<p>The true value of such a scalable system is not in the single analysis, but in the ability to analyze hundreds, thousands, and even millions of samples at the same time.</p>
+
+<p><img src="images/indexing-011.svg" /></p>
+
+<p>With cloud-integration and Big Data-based frameworks, even handling an entire city network with 100s of drones and cameras running continuously is an easy task without worrying about networks, topology, or fault-tolerance.</p>
+
+<h2 id="technical-aspects">Technical Aspects</h2>
+
+<h3 id="processing-the-data">Processing the Data</h3>
+
+<p>Once the cluster has been comissioned and you have the SparkContext called sc (automatically provided in Databricks Cloud or Zeppelin), the data can be loaded using the Spark Image Layer. Since we are using real-time analysis, we acquire the images from an archive of images and create a database out of the results.</p>
+
+<div class="code">
+val iqaeDB = sc.createImageDatabase("s3n://chest-ct/scans/*/*.avi", <br />
+  patientInfo="jdbc://oracle-db/PATIENTS")<br />
+  iqaeDB.registerImageTable("PatientImages")<br />
+</div>
+
+<p>Although we execute the command on one machine, the analysis will be distributed over the entire set of cluster resources available to sc. To further process the images, we can take advantage of the rich set of functionality built into Spark Image Layer.</p>
+
+<p>The entire pipeline can then be started to run in real-time on all the new images as they stream in. If the tasks become more computationally intensive, then the computing power can be scaled up and down elastically.</p>
+
+<h2 id="learn-more">Learn More</h2>
+
+<p><em>4Quant</em> is active in a number of different areas from medicine to remote sensing. Our image processing framework (Spark Image Layer) and our query engine (<em>Image Query and Analysis Engine</em>) are widely adaptable to a number of different specific applications.</p>
+
+<p>Check out our other use-cases to see how <em>4Quant</em> can help you</p>
+
+<h3 id="medicine">Medicine</h3>
+
+<div class="news">
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">Planning surgery and radiotherapy with real time segmentations</a>
+  </p>
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">Segmenting organs from archived chest CT images</a>
+  </p>
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">Finding lesions in Capsule Based Endoscopy</a>
+  </p>
+</div>
+
+<h3 id="geographic-information-systems">Geographic Information Systems</h3>
+
+<div class="news">
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">Calculating Flood Risk for Insurance Companies</a>
+  </p>
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">Counting Cars in Satellite Images</a>
+  </p>
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">Finding buildings and forests in Satellite Images</a>
+  </p>
+</div>
+
+<h3 id="surveillance">Surveillance</h3>
+
+<div class="news">
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">Count people from drone footage</a>
+  </p>
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">Finding criminals with traffic cameras</a>
+  </p>
+</div>
+
+<h3 id="real-time-qa">Real-time QA</h3>
+
+<div class="news">
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">Check train tracks in real time</a>
+  </p>
+</div>
+
+<h3 id="fun">Fun</h3>
+
+<div class="news">
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">Untangling the flood of Online Dating</a>
+  </p>
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">Quantitative Image Search Machine</a>
+  </p>
+</div>
+
+<h2 id="technical-presentations">Technical Presentations</h2>
+
+<p>To find out more about the technical aspects of our solution, check out our presentation at:</p>
+
+<div class="news">
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">Spark Summit or watch the video.</a>
+  </p>
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">Synchrotron Radiation Instrumentation 2015</a>
+  </p>
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">ICTMS 2015</a>
+  </p>
+  <div>December 27 2015</div>
+  <p>
+    <a href="#">LifeScienceForumBasel 2015</a>
+  </p>
+</div>
+
+      </section>
+    </main>
+    <section>
+      <nav>
+        <ul class="list-horizontal">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <ul class="list-horizontal">
+          <li><a href="about.html"style="white-space: nowrap;">About us</a></li>
+          <li><a href="legals.html">Legals</a></li>
+        </ul>
+      </nav>
+    </section>
+  </body>
+</html>

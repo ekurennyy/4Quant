@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>4Quant | Flood Risk Analytics</title>
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <link href="stylesheets/main.css" rel="stylesheet" />
+    <script src="javascripts/main.js"></script>
+    <script>
+      SmartUnderline.init({
+      "location": ""
+      });
+    </script>
+  </head>
+  <body>
+    <section>
+      <header>
+        <div class="brand">
+          <div class="brand-name"><a href="/"><strong>4Q</strong>uant</a></div>
+          <div class="claim"><a href="/">Big Image Analytics</a></div>
+        </div>
+      </header>
+    </section>
+    <main>
+      <section>
+        <h1 id="flood-risk-analytics">Flood Risk Analytics</h1>
+
+<div class="date">August 4, 2015</div>
+
+<h2 id="flood-risk-assessment">Flood Risk Assessment</h2>
+
+<p>For insurance companies to accurately model flood risk, primarily two sources of information are needed. First is information about flood severity, which can be derived from current and historic water location (rivers, coastlines, lakes), stores (glaciers, snowmelt), and levels (topology). Second is an analysis of vulnerability, which is based on the properties within these regions.</p>
+
+<p>Property insurance firms require the ability to combine such information about natural structures with high geographic resolution. Historic information is of limited value due to limited detail of existing records (in both a spatial and temporal sense) and the rarity of flood events. Additionally climate change causes local change in weather patterns and surface modifications lead to altering water run-off pathways.</p>
+
+<p>Despite a multitude of data sources, there has been a drought in actionable information and as a result flood modeling has been both uncertain and ambiguous. The uncertainty and ambiguity has tremendous financial implications as in the year 2013 alone, water-hazard-related losses amounted to <a href="http://www.munichre.com/">nearly one trillion USD</a>.</p>
+
+<p>For an evidence-based risk modeling to be a reality, it is essential to have access to high-resolution data collected over the entire area of insured properties on a regular basis. With this dynamic information, it would be possible to couple the models for distribution of the flood severity with the vulnerability of the insurance portfolio and arrive transparently at a concrete, traceable value for total loss prediction. The modeled information can further be used in various analytical areas of general insurance firms such as in pricing, reserving, and capital modeling for solvency purposes.</p>
+
+<h2 id="next-generation-satellite-imaging-with-iqae">Next Generation Satellite Imaging with IQAE</h2>
+
+<p>In parallel, the latest satellite developments from NASA, Google, Airbus Defense EADS and others provide frequent (weekly) high resolution (10m) imaging of the entire planet. These measurements result in petabytes of data generation.</p>
+
+<div class="half-width-image"><img src="images/flood-risk/fr-001.png" /></div>
+
+<h3 id="image-query-and-analysis-engine">Image Query and Analysis Engine</h3>
+
+<div class="half-width-image"><img src="images/flood-risk/fr-002.png" /></div>
+
+<p>Our tools enable large, complicated satellite imaging datasets to be processed easily and scaled across hundreds of machines.</p>
+
+<h3 id="example">Example</h3>
+
+<h4 id="locate-bodies-of-water-in-the-image">Locate bodies of water in the image</h4>
+
+<p>Here we locate and segment the water for a single day in the following images.</p>
+
+<div class="code">
+  SELECT feature FROM ( <br />
+    SELECT SEGMENT_WATER(image.blue) FROM SatelliteImages  <br />
+    ) WHERE AREA &gt; 1000m^2 AND DATE IS 4-8-2015
+</div>
+
+<div class="half-width-image">
+  <img src="images/flood-risk/fr-001.png" />
+  <img src="images/flood-risk/fr-003.png" />
+</div>
+
+<p>The data can also be processed over months even years worth of old images to characterize the standard changes in water levels.</p>
+
+<div class="code">
+  SELECT DATE,AREA FROM ( <br />
+    SELECT SEGMENT_WATER(image.blue) FROM SatelliteImages  <br />
+    ) WHERE AREA &gt; 1000m^2 AND  <br />
+      DATE BETWEEN 4-8-2000 AND 4-8-2015
+</div>
+
+<p><img src="images/flood-risk/fr-004.png" /></p>
+
+<p>This information can then be summarized by year to get a better idea of the most extreme cases from a large pool</p>
+
+<div class="code">
+  SELECT DATE.YEAR,MIN(AREA),MAX(AREA) FROM ( <br />
+    SELECT SEGMENT_WATER(image.blue) FROM SatelliteImages  <br />
+    ) WHERE AREA &gt; 1000m^2 AND  <br />
+      DATE BETWEEN 4-8-2000 AND 4-8-2015 <br />
+      GROUP BY DATE.YEAR <br />
+</div>
+
+<p><img src="images/flood-risk/fr-005.png" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>year</th>
+      <th>min.area</th>
+      <th>max.area</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2000</td>
+      <td>0.0006822</td>
+      <td>0.0017186</td>
+    </tr>
+    <tr>
+      <td>2001</td>
+      <td>0.0002175</td>
+      <td>0.0017342</td>
+    </tr>
+    <tr>
+      <td>2002</td>
+      <td>0.0003068</td>
+      <td>0.0015424</td>
+    </tr>
+    <tr>
+      <td>2003</td>
+      <td>0.0002740</td>
+      <td>0.0018010</td>
+    </tr>
+    <tr>
+      <td>2004</td>
+      <td>0.0001725</td>
+      <td>0.0018281</td>
+    </tr>
+    <tr>
+      <td>2005</td>
+      <td>0.0001795</td>
+      <td>0.0016319</td>
+    </tr>
+    <tr>
+      <td>2006</td>
+      <td>0.0001851</td>
+      <td>0.0018769</td>
+    </tr>
+    <tr>
+      <td>2007</td>
+      <td>0.0003189</td>
+      <td>0.0019106</td>
+    </tr>
+    <tr>
+      <td>2008</td>
+      <td>0.0007270</td>
+      <td>0.0022661</td>
+    </tr>
+    <tr>
+      <td>2009</td>
+      <td>0.0006729</td>
+      <td>0.0021103</td>
+    </tr>
+    <tr>
+      <td>2010</td>
+      <td>0.0007058</td>
+      <td>0.0020922</td>
+    </tr>
+    <tr>
+      <td>2011</td>
+      <td>0.0006443</td>
+      <td>0.0021316</td>
+    </tr>
+    <tr>
+      <td>2012</td>
+      <td>0.0008001</td>
+      <td>0.0020073</td>
+    </tr>
+    <tr>
+      <td>2013</td>
+      <td>0.0006278</td>
+      <td>0.0021103</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>0.0008639</td>
+      <td>0.0022816</td>
+    </tr>
+    <tr>
+      <td>2015</td>
+      <td>0.0005949</td>
+      <td>0.0018625</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="identify-houses-in-image">Identify houses in image</h4>
+
+<div class="code">
+  SELECT feature FROM ( <br />
+    SELECT SEGMENT_BUILDING(image) FROM SatelliteImages  <br />
+    ) WHERE SIZE &gt; 100m^2 AND DATE IS 4-8-2014 <br />
+</div>
+
+<div class="half-width-image">
+  <img src="images/flood-risk/fr-001.png" />
+  <img src="images/flood-risk/fr-006.png" />
+</div>
+
+<h4 id="identify-the-houses-distance-from-the-river">Identify the houses distance from the river</h4>
+
+<div class="code">SELECT bd.pos,rv.distance FROM Buildings AS bd JOIN Distance(River) AS rv ON bd.pos = rv.pos</div>
+
+<div class="half-width-image">
+  <img src="images/flood-risk/fr-007.png" />
+  <img src="images/flood-risk/fr-006.png" />
+</div>
+
+<p><img src="images/flood-risk/fr-008.png" /></p>
+
+<p>Or an interactive map for more exact examination:</p>
+
+<iframe height="560px" width="560px" src="http://4quant.com/Flood-Risk/widget_building-distance.html"></iframe>
+
+<p>Furthermore the data can be analyzed using standard tools like Excel, R, or Matlab for further quantifying and modeling of the risk.</p>
+
+<p><img src="images/flood-risk/fr-009.png" /></p>
+
+<p>A more detailed distribution which allows us to see that the larger more expensive buildings (the category furthest on the right) are preferentially located close to the river. This could be a major concern for future risks.</p>
+
+<p><img src="images/flood-risk/fr-010.png" /></p>
+
+<h2 id="how">How</h2>
+
+<p>There are two interfaces available the <em>data consumer</em> and the <em>data scientist</em>.</p>
+
+<p><img src="images/flood-risk/fr-011.png" /></p>
+
+<ul>
+  <li>For the <strong>data consumer</strong> There interface is SQL console (JDBC-compatible), which can be examined with ad-hoc queries as shown above. The data can be combined and integrated with other sources using standard SQL operations and the full class of 4Quant’s imaging tools are available as integrated functions.</li>
+  <li>For the <strong>data scientist</strong> There is a Scala/Java and Python interface. With this interface new code can be compiled and execute to process the images and other data. Anything from new image processing functions (denoising, feature recognition, optical character recognition) to further analyses (covariance matrix-based identification) can easily be integrated in our high-throughput pipeline.</li>
+</ul>
+
+<h3 id="distributing-the-analysis">Distributing the Analysis</h3>
+
+<p>The first question is how the data can be processed. The basic work is done by a simple workflow on top of our Spark Image Layer. This abstracts away the complexities of cloud computing and distributed analysis. You focus only on the core task of image processing.</p>
+
+<p><img src="images/flood-risk/fr-012.svg" style="width: 40%;" /></p>
+
+<p>Beyond a single train, our system scales linearly to multiple datasources and petabytes of information across hundreds of computers to keep the computation real-time.</p>
+
+<p><img src="images/flood-risk/fr-013.svg" /></p>
+
+<p>With cloud-integration and Big Data-based frameworks, even handling an entire satellite network with 100s of satellites continuously collecting data is an easy task without worrying about networks, topology, or fault-tolerance. Below is an example for 30 different map sources where the tasks are seamlessly, evenly divided among 50 different machines.</p>
+
+<p><img src="images/flood-risk/fr-014.svg" /></p>
+
+<h3 id="processing-the-data">Processing the Data</h3>
+
+<p>Once the cluster has been comissioned and you have the SparkContext called <code>sc</code> (automatically provided in <a href="https://databricks.com/product/databricks">Databricks Cloud</a> or <a href="http://zeppelin.incubator.apache.org/">Zeppelin</a>, the data can be loaded using the Spark Image Layer. Since for this case we load the images from a private repository stored on Amazon’s S3 block storage (also compatible with local filesystems, Google Compute, IBM SoftLayer)</p>
+
+<div class="code">
+  val fullSatImage = sc.readTiledImage\[Double]("s3n://geo-images/esri-satimg/*/*.png",256,256).cache
+</div>
+
+<p>Although we execute the command on one machine, the analysis will be distributed over the entire set of cluster resources available to <code>sc</code>. To further process the images, we can take advantage of the rich set of functionality built into Spark Image Layer. Watch <a href="https://www.youtube.com/watch?v=TA_h0jY7iPc">our webinar</a> to learn more.</p>
+
+<h3 id="learn-more">Learn More</h3>
+
+<p>To find out more about the technical aspects of our solution, check out our presentation at the <a href="http://4quant.com/spark-east-2015">Spark Summit</a> or watch the <a href="https://www.youtube.com/watch?v=ohR_y7HZaHA&amp;index=10&amp;list=PL-x35fyliRwiy50Ud2ltPx8_yA4H34ppJ">video</a>.
+Check out our other demos to see how 4Quant can help you:</p>
+
+<ul>
+  <li><a href="http://4quant.com/countingcarsdemo">Counting Cars in Satellite Images</a></li>
+  <li><a href="http://4quant.com/geospatialdemo/">Finding buildings and forests in Satellite Images</a></li>
+  <li><a href="http://4quant.com/Railway-Check">Check train tracks in real time</a></li>
+  <li><a href="http://4quant.com/Pursuing-Criminals/">Track criminals in cars using traffic cameras</a></li>
+  <li><a href="http://4quant.com/Drone-People-Counting">Count people from drone footage</a></li>
+</ul>
+
+      </section>
+    </main>
+    <section>
+      <nav>
+        <ul class="list-horizontal">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <ul class="list-horizontal">
+          <li><a href="about.html"style="white-space: nowrap;">About us</a></li>
+          <li><a href="legals.html">Legals</a></li>
+        </ul>
+      </nav>
+    </section>
+  </body>
+</html>

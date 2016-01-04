@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>4Quant | Online Dating Analytics</title>
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <link href="stylesheets/main.css" rel="stylesheet" />
+    <script src="javascripts/main.js"></script>
+    <script>
+      SmartUnderline.init({
+      "location": ""
+      });
+    </script>
+  </head>
+  <body>
+    <section>
+      <header>
+        <div class="brand">
+          <div class="brand-name"><a href="/"><strong>4Q</strong>uant</a></div>
+          <div class="claim"><a href="/">Big Image Analytics</a></div>
+        </div>
+      </header>
+    </section>
+    <main>
+      <section>
+        <h1 id="online-dating-analytics">Online Dating Analytics</h1>
+
+<div class="date">July 28, 2015</div>
+
+<h2 id="sifting-through-the-noise-in-online-dating">Sifting through the noise in Online Dating</h2>
+
+<blockquote>
+  <p><em>Today, if you own a smartphone, you’re carrying a 24-7 singles bar in your pocket.</em> - Aziz Ansari, Modern Romance: An Investigation</p>
+</blockquote>
+
+<p>Modern dating platforms have drastically increased the number of possibilities for modern singles. With this great selection comes, however, the <a href="https://en.wikipedia.org/wiki/The_Paradox_of_Choice">paradox of choice</a> which causes a plethora to quickly transform from an opportunity to a burden. While many sites provide specialized matching algorithms based on your shared like of cats or affinity for Pearl Jam songs, but defining physical characteristics are completely left out. Occasionally self-descriptions are available but are not usually reliable. Endless swiping through images and profiles to find the needles in the haystack is an exhausting process.</p>
+
+<h2 id="image-query-and-analysis-engine">Image Query and Analysis Engine</h2>
+
+<p>Within each face are millions of possible metrics ranging from nostril size to eye spacing which collectively fit together to define your own version of beauty. Quantitative image analytics can be used to extract these metrics from millions of images in seconds and help filter out the riff-raff and keep only the desired results.</p>
+
+<p><img src="images/online-dating/od-001.png" /></p>
+
+<div class="code">SELECT Winking=TRUE AND HAIR_COLOR = "black"</div>
+
+<div class="half-width-image"><img src="images/online-dating/od-002.gif" /></div>
+
+<h3 id="real-time">Real-time</h3>
+
+<p>More importantly than a single query, is the ability to perform queries on complex datasets in real-time and have the processing distributed over a number of machines.</p>
+
+<div class="half-width-image">
+  <img src="images/online-dating/od-003.gif" style="width: 160px;" />
+  <img src="images/online-dating/od-004.gif" style="width: 160px;" />
+  <img src="images/online-dating/od-005.gif" style="width: 160px;" />
+  <img src="images/online-dating/od-006.gif" style="width: 160px;" />
+</div>
+
+<h3 id="how">How?</h3>
+
+<p>The first question is how the data can be processed. The basic work is done by a simple workflow on top of our Spark Image Layer. This abstracts away the complexities of cloud computing and distributed analysis. You focus only on the core task of image processing.</p>
+
+<p><img src="images/online-dating/od-007.svg" style="width: 40%;" /></p>
+
+<p>The true value of such a scalable system is not in the single analysis, but in the ability to analyze hundreds, thousands, and even millions of samples at the same time.</p>
+
+<p><img src="images/online-dating/od-008.svg" /></p>
+
+<p>With cloud-integration and <em>Big Data</em>-based frameworks, even handling an entire city network with 100s of drones and cameras running continuously is an easy task without worrying about networks, topology, or fault-tolerance.</p>
+
+<h3 id="what">What?</h3>
+
+<p>The images come from one or more dating sites or apps in the form of a real-time stream.</p>
+
+<div class="half-width-image"><img src="images/online-dating/od-009.gif" /></div>
+
+<p>The first step is to identify the background and the region for the face inside of the image.</p>
+
+<div class="half-width-image"><img src="images/online-dating/od-010.jpg" /></div>
+
+<p>The second is to enhance selectively the features in the face itself so they can be more directly quantified and analyzed.</p>
+
+<div class="half-width-image"><img src="images/online-dating/od-011.png" /></div>
+
+<p>The edges can then be used to generate features on the original face to use as the basis for extracting quantitative metrics.</p>
+
+<div class="half-width-image"><img src="images/online-dating/od-012.png" /></div>
+
+<h3 id="possibilities">Possibilities</h3>
+
+<p>With the ability to segment and analyse faces and features in huge collections of images without processing beforehand, the possibilities are endless. Of particlar interest is the ability to investigate specific metrics as they related to relationship success, for example eye separation and number of <em>likes</em>.</p>
+
+<div class="code">
+  SELECT CORR2(left_eye.x-right_eye.x,likes) FROM ( <br />
+    SELECT face.left_eye.x,face.right_eye.x,likes FROM ( <br />
+      SELECT SEGMENT_FACE(profile_image) AS face,likes FROM USER <br />
+    ) <br />
+  )
+</div>
+
+<p><img src="images/online-dating/od-013.png" /></p>
+
+<h3 id="machine-learning">Machine Learning</h3>
+
+<p>The quantitatively meaningful data can then be used to train machine learning algorithms (decision trees to SVM) in order to learn from previous successes or failures.</p>
+
+<p>Here we show a simple decision tree trained to identify good and bad on the basis of color, position, texture and shape.</p>
+
+<p><img src="images/online-dating/od-014.png" /></p>
+
+<p>Furthermore the ability to parallelize and scale means thousands to millions of images and profiles can be analyzed at the same time to learn even more about your preferences.</p>
+
+<h2 id="learn-more">Learn More</h2>
+
+<p>4Quant is active in a number of different areas from medicine to remote sensing. Our image processing framework (Spark Image Layer) and our query engine (Image Query and Analysis Engine) are widely adaptable to a number of different specific applications.</p>
+
+<h3 id="use-cases">Use Cases</h3>
+
+<p>Check out our other use-cases to see how 4Quant can help you</p>
+
+<h4 id="medicine">Medicine</h4>
+
+<ul>
+  <li><a href="http://4quant.com/Realtime-MRI-Segmentation">Planning surgery and radiotherapy with real time segmentations</a></li>
+  <li><a href="http://4quant.com/Organ-Segmentation/">Segmenting organs from archived chest CT images</a></li>
+  <li><a href="http://4quant.com/Capsule-Endoscopy">Finding lesions in Capsule Based Endoscopy</a></li>
+</ul>
+
+<h4 id="geographic-information-systems">Geographic Information Systems</h4>
+
+<ul>
+  <li><a href="http://4quant.com/Flood-Risk">Calculating Flood Risk for Insurance Companies</a></li>
+  <li><a href="http://4quant.com/countingcarsdemo">Counting Cars in Satellite Images</a></li>
+  <li><a href="http://4quant.com/geospatialdemo/">Finding buildings and forests in Satellite Images</a></li>
+</ul>
+
+<h4 id="surveillance">Surveillance</h4>
+
+<ul>
+  <li><a href="http://4quant.com/Drone-People-Counting">Count people from drone footage</a></li>
+  <li><a href="http://4quant.com/Pursuing-Criminals/">Finding criminals with traffic cameras</a></li>
+</ul>
+
+<h4 id="real-time-qa">Real-time QA</h4>
+
+<ul>
+  <li><a href="http://4quant.com/Railway-Check">Check train tracks in real time</a></li>
+</ul>
+
+<h4 id="fun">Fun</h4>
+
+<ul>
+  <li><a href="http://4quant.com/Online-Dating">Untangling the flood of Online Dating</a></li>
+  <li><a href="http://kmader.shinyapps.io/SearchMachineDemo">Quantitative Image Search Machine</a></li>
+</ul>
+
+<h3 id="technical-presentations">Technical Presentations</h3>
+
+<p>To find out more about the technical aspects of our solution, check out our presentation at:</p>
+
+<ul>
+  <li><a href="http://4quant.com/spark-east-2015">Spark Summit</a> or watch the <a href="https://www.youtube.com/watch?v=ohR_y7HZaHA&amp;index=10&amp;list=PL-x35fyliRwiy50Ud2ltPx8_yA4H34ppJ">video</a>.</li>
+  <li><a href="http://4quant.com/SRI2015">Synchrotron Radiation Instruementation 2015</a></li>
+  <li><a href="http://4quant.com/ICTMS2015">ICTMS 2015</a></li>
+  <li><a href="http://4quant.com/LSFB2015">LifeScienceForumBasel 2015</a></li>
+</ul>
+
+      </section>
+    </main>
+    <section>
+      <nav>
+        <ul class="list-horizontal">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <ul class="list-horizontal">
+          <li><a href="about.html"style="white-space: nowrap;">About us</a></li>
+          <li><a href="legals.html">Legals</a></li>
+        </ul>
+      </nav>
+    </section>
+  </body>
+</html>

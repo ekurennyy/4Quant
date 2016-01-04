@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>4Quant | Satellite Image Demo</title>
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <link href="stylesheets/main.css" rel="stylesheet" />
+    <script src="javascripts/main.js"></script>
+    <script>
+      SmartUnderline.init({
+      "location": ""
+      });
+    </script>
+  </head>
+  <body>
+    <section>
+      <header>
+        <div class="brand">
+          <div class="brand-name"><a href="/"><strong>4Q</strong>uant</a></div>
+          <div class="claim"><a href="/">Big Image Analytics</a></div>
+        </div>
+      </header>
+    </section>
+    <main>
+      <section>
+        <h1 id="satellite-image-demo">Satellite Image Demo</h1>
+
+<div class="date">April 27, 2015</div>
+
+<h2 id="esri-satellite-images">ESRI Satellite Images</h2>
+
+<p>We start off with the satellite images over the <a href="http://www.psi.ch/">Paul Scherrer Institute</a> in Villigen, Switzerland (acquired from <a href="http://server.arcgisonline.com/">ESRI ArcGIS Online</a>)</p>
+
+<iframe height="560px" width="560px" src="http://4quant.com/geospatialdemo/map_unnamed-chunk-2.html"></iframe>
+
+<h3 id="load-the-data-in">Load the data in</h3>
+
+<p>Once the Spark Cluster has been created and you have the <em>SparkContext</em> called <code>sc</code> (automatically provided in <a href="https://databricks.com/product/databricks-cloud">Databricks Cloud</a> or <a href="http://zeppelin.incubator.apache.org/">Zeppelin</a>), the data can be loaded using the Spark Image Layer. The command <code>readTiledImage</code> loads in the data as tiles and can read mega-, giga-, even petabytes of data from Amazon’s <a href="http://aws.amazon.com/s3/">S3</a>, Hadoop Filesystem (<a href="http://hortonworks.com/hadoop/hdfs/">HDFS</a>), or any shared / network filesystem.</p>
+
+<div class="code">val psiBingImage = sc.readTiledImage\[Double]("s3n://geo-images/esri-satimg/psi*.png",256,256).cache</div>
+
+<p>Although we execute the command one one machine, the data will be evenly loaded over all of the machines in the cluster (or cloud). The <code>cache</code> suffix keeps the files in memory so they can be read faster as many of our image processing tasks access the images a number of times.</p>
+
+<h3 id="finding-reflective-objects">Finding Reflective Objects</h3>
+
+<p>
+  As our first task we want to identify all of the reflective objects, for this we - apply a threshold to the average intensity `((red+blue+green)/3)` - identify the distinct regions - analyze the area and perimeter of the regions
+</p>
+
+<h3 id="threshold--segmentation">Threshold / Segmentation</h3>
+
+<div class="code">
+  // Segment out all of the non-zero points <br />
+  val pointImage = psiBingImage.sparseThresh(_.intensity&gt;200).cache
+</div>
+
+<h3 id="shape-analysis-area-and-perimeter">Shape Analysis (Area and Perimeter)</h3>
+
+<div class="code">
+  // Run a shape analysis to measure the position, area, and intensity of each identified region <br />
+  val shapeAnalysis = EllipsoidAnalysis.runIntensityShapeAnalysis(uniqueRegions)
+</div>
+
+<p><img src="images/geospatialdemo/geospatialdemo-001.png" /></p>
+
+<iframe height="560px" width="560px" src="http://4quant.com/geospatialdemo/map_unnamed-chunk-8.html"></iframe>
+
+<h3 id="estimating-tree-coverage">Estimating Tree Coverage</h3>
+
+<p>To estimate the tree coverage is a slightly more difficult problem, but involves fundamentally the same types of analysis. For this we will use a different threshold criteria for identifying the trees and then apply some morphological operations to group nearby objects together.</p>
+
+<h4 id="threshold--segmentation-1">Threshold / Segmentation</h4>
+
+<p>We identify the tree regions using a fairly simple rule with two criteria</p>
+
+<div>
+  <ol>
+    <li>`Green &gt; (Red+Blue)/2`</li>
+    <li>`Green &gt; 50`</li>
+  </ol>
+</div>
+
+<p>We also see that the code which we write, although it is parallel and running over a whole cluster of computers, mirrors the math nicely and contains none of the details of cluster or data management.</p>
+
+<div class="code">
+  // Segment out all of points which meet the following criteria <br />
+  val treeImage = psiBingImage.sparseThresh{ <br />
+    pixVal =&gt; <br />
+      // the green is brighter than the average of the red and the blue <br />
+      (pixVal.green&gt;(pixVal.red+pixVal.blue)/2) &amp; <br />
+      // the green value itself is dark (trees do not reflect much) <br />
+      (pixVal.green&lt;50)  <br />
+    }.cache
+</div>
+
+<h4 id="connecting-nearby-groups">Connecting nearby groups</h4>
+
+<p>We use the information in the neighborhood of each pixel to connect groups of nearby pixels together (two small adjacent clumps become one). This operation is known in image processing as a <a href="https://rawgithub.com/kmader/Quantitative-Big-Imaging-2015/master/Lectures/03-Slides.html#/37">Morphological Close</a></p>
+
+<div class="code">
+  // Perform 3 closing operations to connect the nearby tree regions together <br />
+  val treeGroupImage = Morphology.close(treeImage,3)
+</div>
+
+<h4 id="identifying-regions">Identifying Regions</h4>
+
+<p>We apply component labeling and then filter to results to only keep the middle sized objects (too small are just artifacts or noise, too large is the river and other dark, green objects)</p>
+
+<div class="code">
+  // Label each region using connected component labeling with a 3 x 3 window <br />
+  val treeRegions = ConnectedComponents. <br />
+    Labeling2DChunk(treeGroupImage).filter{ <br />
+    tRegion =&gt; <br />
+      // we now remove the small single dark regions <br />
+      tRegion.area&gt;1000 &amp;  <br />
+      // since some of the river is classified as 'tree' as well we can remove all very large objects <br />
+      tRegion.area&lt;500000 <br />
+    }
+</div>
+
+<p><img src="images/geospatialdemo/geospatialdemo-002.png" /></p>
+
+<iframe height="560px" width="560px" src="http://4quant.com/geospatialdemo/map_unnamed-chunk-12.html"></iframe>
+
+<h4 id="shape-analysis-area-perimeter-concavity">Shape Analysis (Area, Perimeter, Concavity)</h4>
+
+<p>Now we can calculate the shape information for the tree areas to look at some of the statistics</p>
+
+<div class="code">
+  // Run a shape analysis to measure the position, area, and intensity of each identified region <br />
+  val shapeAnalysis = EllipsoidAnalysis.runIntensityShapeAnalysis(treeRegions)
+</div>
+
+<p><img src="images/geospatialdemo/geospatialdemo-003.png" />
+<img src="images/geospatialdemo/geospatialdemo-004.png" /></p>
+
+<p>We can then place the statistics back onto the map (for the largest ones)</p>
+
+<iframe height="560px" width="560px" src="http://4quant.com/geospatialdemo/map_unnamed-chunk-14.html"></iframe>
+
+<h3 id="density-plots">Density Plots</h3>
+
+<p>Additionally metrics can be calculated like tree density and displayed on their own</p>
+
+<p><img src="images/geospatialdemo/geospatialdemo-005.png" /></p>
+
+<p>Or projected back on top of the original data and a standard map</p>
+
+<iframe height="560px" width="560px" src="http://4quant.com/geospatialdemo/map_unnamed-chunk-14.html"></iframe>
+
+<!-- CDN for MATH formulas -->
+
+<script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+      </section>
+    </main>
+    <section>
+      <nav>
+        <ul class="list-horizontal">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <ul class="list-horizontal">
+          <li><a href="about.html"style="white-space: nowrap;">About us</a></li>
+          <li><a href="legals.html">Legals</a></li>
+        </ul>
+      </nav>
+    </section>
+  </body>
+</html>

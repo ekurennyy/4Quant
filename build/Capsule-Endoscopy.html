@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>4Quant | Capsule Endoscopy Video Analytics</title>
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <link href="stylesheets/main.css" rel="stylesheet" />
+    <script src="javascripts/main.js"></script>
+    <script>
+      SmartUnderline.init({
+      "location": ""
+      });
+    </script>
+  </head>
+  <body>
+    <section>
+      <header>
+        <div class="brand">
+          <div class="brand-name"><a href="/"><strong>4Q</strong>uant</a></div>
+          <div class="claim"><a href="/">Big Image Analytics</a></div>
+        </div>
+      </header>
+    </section>
+    <main>
+      <section>
+        <h1 id="capsule-endoscopy-video-analytics">Capsule Endoscopy Video Analytics</h1>
+
+<div class="date">July 24, 2015</div>
+
+<h2 id="identifying-diseased-tissue-in-capsule-endoscopy-movies">Identifying Diseased Tissue in Capsule Endoscopy Movies</h2>
+
+<p>Capsule endoscopy is a particularly innovative way for diagnosing a number of conditions without requiring surgical or otherwise invasive procedures. The self-contained capsule is simple swallowed and videos are recorded of the patients digestive track. The usual passing time of 24-48 hours means that a significant amount of video data is created for each patient and much of it is not diagnostically relevant. Viewing and finding the ‘needles’ in this haystack of data is very time consuming and can cause many minor details to be missed.</p>
+
+<h2 id="image-query-and-analysis-engine">Image Query and Analysis Engine</h2>
+
+<p>The input videos can be 24 hours or longer so for this example we just show a small section of the video below and the steps for quantitative image analysis (taken from <a href="https://www.youtube.com/watch?v=zBYbFQzldtU">https://www.youtube.com/watch?v=zBYbFQzldtU</a>).</p>
+
+<h3 id="sifting-through-old-data">Sifting through old data</h3>
+
+<p><img src="images/capsule-endoscopy/ce-001.png" /></p>
+
+<h3 id="filter-out-samples-with-unique-features">Filter out samples with unique features</h3>
+
+<div class="half-width-image">
+  <img src="images/capsule-endoscopy/ce-002.png" />
+  <img src="images/capsule-endoscopy/ce-003.png" />
+</div>
+
+<h3 id="real-time-processing">Real-time Processing</h3>
+
+<div class="half-width-image">
+  <img src="images/capsule-endoscopy/ce-004.gif" />
+  <img src="images/capsule-endoscopy/ce-005.gif" />
+  <img src="images/capsule-endoscopy/ce-006.gif" />
+</div>
+
+<h3 id="how">How?</h3>
+
+<p>The first question is how the data can be processed. The basic work is done by a simple workflow on top of our Spark Image Layer. This abstracts away the complexities of cloud computing and distributed analysis. You focus only on the core task of image processing.</p>
+
+<p><img src="images/capsule-endoscopy/ce-007.svg" style="width:40%" /></p>
+
+<p>The true value of such a scalable system is not in the single analysis, but in the ability to analyze hundreds, thousands, and even millions of samples at the same time.</p>
+
+<p><img src="images/capsule-endoscopy/ce-008.svg" /></p>
+
+<p>With cloud-integration and Big Data-based frameworks, even handling an entire city network with 100s of drones and cameras running continuously is an easy task without worrying about networks, topology, or fault-tolerance.</p>
+
+<h3 id="what">What?</h3>
+
+<p>The images which are collected by the capsule continuously and converted into a video. We can then analyze each frame of the video to identify interesting sites.</p>
+
+<p><img src="images/capsule-endoscopy/ce-009.png" /></p>
+
+<p>The first step in this identification is to segment the frame into so-called superpixels, a standard technique for grouping similar regions together and makes examining textures and other parameters much easier.</p>
+
+<p><img src="images/capsule-endoscopy/ce-010.png" />
+<img src="images/capsule-endoscopy/ce-011.png" /></p>
+
+<p>The data can be then analyzed in more detail to extract quantitatively meaningful metrics on the structure of the tissue.</p>
+
+<p><img src="images/capsule-endoscopy/ce-012.png" /></p>
+
+<p>From all of the images general trends can be identified by examining all of the phenotypes and trying to identify the important ones for differentiating disease. The following figure shows the relationship between shape (of the super-pixels) and the healthy segments as pink dots and the abnormal as blue dots. The shape and position provide some differentation but are not definitive enough to clearly distinguish the two groups.</p>
+
+<p><img src="images/capsule-endoscopy/ce-013.png" /></p>
+
+<p>Here we show the relative color components for each channel (red, green, and blue) and how they are related to the tissue labeled as healthy and abnormal.</p>
+
+<p><img src="images/capsule-endoscopy/ce-014.png" /></p>
+
+<p>Here rather than showing the relative intensities we show the median absolute deviation which is better at characterizing the variation inside each structure.</p>
+
+<p><img src="images/capsule-endoscopy/ce-015.png" /></p>
+
+<p>The results can also be summarized as statistical outputs for comparing the phenotypes values for the groups of normal and abnormal tissue.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Abnormal</th>
+      <th>Normal</th>
+      <th>p.overall</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>N=407</td>
+      <td>N=20828</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Centroid.X</td>
+      <td>369 (141)</td>
+      <td>319 (159)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>Centroid.Y</td>
+      <td>221 (87.6)</td>
+      <td>179 (89.6)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>Circularity</td>
+      <td>0.44 (0.16)</td>
+      <td>0.50 (0.16)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>Convexity</td>
+      <td>0.87 (0.06)</td>
+      <td>0.88 (0.07)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>Mean_blue</td>
+      <td>0.27 (0.01)</td>
+      <td>0.21 (0.03)</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <td>Mean_green</td>
+      <td>0.43 (0.02)</td>
+      <td>0.47 (0.05)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>Mean_red</td>
+      <td>0.30 (0.02)</td>
+      <td>0.31 (0.03)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>MAD_blue</td>
+      <td>1.94 (1.01)</td>
+      <td>1.85 (1.18)</td>
+      <td>0.093</td>
+    </tr>
+    <tr>
+      <td>MAD_green</td>
+      <td>1.78 (0.89)</td>
+      <td>1.61 (0.92)</td>
+      <td>&lt;0.001</td>
+    </tr>
+    <tr>
+      <td>MAD_red</td>
+      <td>2.09 (1.08)</td>
+      <td>2.06 (1.37)</td>
+      <td>0.517</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The intensities of the healthy and unusual tissues can be easily compared on such a graph where it is clear that the relative amounts of blue and green play an important role in differentiating the normal and abnormal structures.</p>
+
+<p><img src="images/capsule-endoscopy/ce-016.png" /></p>
+
+<h3 id="machine-learning">Machine Learning</h3>
+
+<p>The quantitatively meaningful data can then be used to train machine learning algorithms (decision trees to SVM) in order to automatically high-light many of the interesting regions and label them as such, dratistically reducing the required time to analyze a single patient.</p>
+
+<p>Here we show a simple decision tree trained to identify lesions using color, position, texture and shape.</p>
+
+<p><img src="images/capsule-endoscopy/ce-017.png" /></p>
+
+<p>The subtree responsible for color-based analysis. Given a large set of data the trees can be more robustly tested and improved to provide the highest sensitivity and specificity criteria.</p>
+
+<p><img src="images/capsule-endoscopy/ce-018.png" style="width:60%" /></p>
+
+<p>Furthermore the ability to parallelize and scale means thousands to millions of videos can be analyzed at the same time to learn even more about the structures of the digestive track and identify new possibilities for diagnosis.</p>
+
+<h2 id="technical-aspects">Technical Aspects</h2>
+
+<h3 id="processing-the-data">Processing the Data</h3>
+
+<p>Once the cluster has been comissioned and you have the SparkContext called <code>sc</code> (automatically provided in <a href="https://databricks.com/product/databricks">Databricks Cloud</a> or <a href="http://zeppelin.incubator.apache.org/">Zeppelin</a>, the data can be loaded using the Spark Image Layer. Since we are using real-time analysis, we acquire the images from an archive of images and create a database out of the results.</p>
+
+<div class="code">
+  val iqaeDB = sc.createImageDatabase("s3n://capsule-endoscopy/scans/*/*.avi",<br />
+  patientInfo="jdbc://oracle-db/PATIENTS") <br />
+  iqaeDB.registerImageTable("Endoscopy")
+</div>
+
+<p>Although we execute the command on one machine, the analysis will be distributed over the entire set of cluster resources available to <code>sc</code>. To further process the images, we can take advantage of the rich set of functionality built into Spark Image Layer.</p>
+
+<p>The entire pipeline can then be started to run in real-time on all the new images as they stream in. If the tasks become more computationally intensive, then the computing power can be scaled up and down elastically.</p>
+
+<h3 id="learn-more">Learn More</h3>
+
+<p>To find out more about the technical aspects of our solution, check out our presentation at the <a href="http://4quant.com/spark-east-2015">Spark Summit</a> or watch the <a href="https://www.youtube.com/watch?v=ohR_y7HZaHA&amp;index=10&amp;list=PL-x35fyliRwiy50Ud2ltPx8_yA4H34ppJ">video</a>.
+Check out our other demos to see how 4Quant can help you:</p>
+
+<ul>
+  <li><a href="http://4quant.com/Railway-Check">Check train tracks in real time</a></li>
+  <li><a href="http://4quant.com/Drone-People-Counting">Count people from drone footage</a></li>
+  <li><a href="http://4quant.com/Pursuing-Criminals/">Track criminals in cars using traffic cameras</a></li>
+  <li><a href="http://4quant.com/countingcarsdemo">Counting Cars in Satellite Images</a></li>
+  <li><a href="http://4quant.com/geospatialdemo/">Finding buildings and forests in Satellite Images</a></li>
+</ul>
+
+      </section>
+    </main>
+    <section>
+      <nav>
+        <ul class="list-horizontal">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <ul class="list-horizontal">
+          <li><a href="about.html"style="white-space: nowrap;">About us</a></li>
+          <li><a href="legals.html">Legals</a></li>
+        </ul>
+      </nav>
+    </section>
+  </body>
+</html>

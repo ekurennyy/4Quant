@@ -1,0 +1,129 @@
+
+<svg width="236pt" height="854pt"
+ viewBox="0.00 0.00 236.00 854.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 850)">
+<title>%3</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-850 232,-850 232,4 -4,4"/>
+<!-- sil -->
+<g id="node1" class="node"><title>sil</title>
+<polygon fill="pink" stroke="pink" points="107,-773.68 34.8542,-649.66 179.146,-649.66 107,-773.68"/>
+<text text-anchor="middle" x="107" y="-703.6" font-family="Times,serif" font-size="14.00">Spark</text>
+<text text-anchor="middle" x="107" y="-686.8" font-family="Times,serif" font-size="14.00">Image</text>
+<text text-anchor="middle" x="107" y="-670" font-family="Times,serif" font-size="14.00">Layer</text>
+</g>
+<!-- group -->
+<g id="node2" class="node"><title>group</title>
+<ellipse fill="steelblue" stroke="steelblue" cx="107" cy="-542" rx="68.162" ry="29.3315"/>
+<text text-anchor="middle" x="107" y="-546.2" font-family="Times,serif" font-size="14.00">Group by</text>
+<text text-anchor="middle" x="107" y="-529.4" font-family="Times,serif" font-size="14.00">Time Window</text>
+</g>
+<!-- sil&#45;&gt;group -->
+<g id="edge1" class="edge"><title>sil&#45;&gt;group</title>
+<path fill="none" stroke="black" d="M107,-649.442C107,-628.359 107,-602.717 107,-581.883"/>
+<polygon fill="black" stroke="black" points="110.5,-581.781 107,-571.781 103.5,-581.781 110.5,-581.781"/>
+</g>
+<!-- tracks -->
+<g id="node3" class="node"><title>tracks</title>
+<ellipse fill="lightgreen" stroke="lightgreen" cx="45" cy="-446" rx="45.436" ry="29.3315"/>
+<text text-anchor="middle" x="45" y="-450.2" font-family="Times,serif" font-size="14.00">Segment</text>
+<text text-anchor="middle" x="45" y="-433.4" font-family="Times,serif" font-size="14.00">People</text>
+</g>
+<!-- group&#45;&gt;tracks -->
+<g id="edge2" class="edge"><title>group&#45;&gt;tracks</title>
+<path fill="none" stroke="black" d="M88.9004,-513.559C82.3662,-503.652 74.9013,-492.334 68.0035,-481.876"/>
+<polygon fill="black" stroke="black" points="70.8032,-479.764 62.3755,-473.343 64.9597,-483.618 70.8032,-479.764"/>
+</g>
+<!-- background -->
+<g id="node4" class="node"><title>background</title>
+<ellipse fill="lightgreen" stroke="lightgreen" cx="169" cy="-446" rx="59.5472" ry="29.3315"/>
+<text text-anchor="middle" x="169" y="-450.2" font-family="Times,serif" font-size="14.00">Segment</text>
+<text text-anchor="middle" x="169" y="-433.4" font-family="Times,serif" font-size="14.00">Background</text>
+</g>
+<!-- group&#45;&gt;background -->
+<g id="edge3" class="edge"><title>group&#45;&gt;background</title>
+<path fill="none" stroke="black" d="M125.1,-513.559C131.466,-503.906 138.716,-492.914 145.465,-482.682"/>
+<polygon fill="black" stroke="black" points="148.401,-484.588 150.985,-474.313 142.557,-480.734 148.401,-484.588"/>
+</g>
+<!-- measure -->
+<g id="node5" class="node"><title>measure</title>
+<polygon fill="lightyellow" stroke="lightyellow" points="77.1453,-379.602 12.8547,-379.602 12.8547,-338.398 77.1453,-338.398 77.1453,-379.602"/>
+<text text-anchor="middle" x="45" y="-363.2" font-family="Times,serif" font-size="14.00">Measure</text>
+<text text-anchor="middle" x="45" y="-346.4" font-family="Times,serif" font-size="14.00">Position</text>
+</g>
+<!-- tracks&#45;&gt;measure -->
+<g id="edge4" class="edge"><title>tracks&#45;&gt;measure</title>
+<path fill="none" stroke="black" d="M45,-416.223C45,-407.663 45,-398.271 45,-389.656"/>
+<polygon fill="black" stroke="black" points="48.5001,-389.641 45,-379.641 41.5001,-389.641 48.5001,-389.641"/>
+</g>
+<!-- identify -->
+<g id="node6" class="node"><title>identify</title>
+<polygon fill="lightyellow" stroke="lightyellow" points="200.566,-379.602 137.434,-379.602 137.434,-338.398 200.566,-338.398 200.566,-379.602"/>
+<text text-anchor="middle" x="169" y="-363.2" font-family="Times,serif" font-size="14.00">Identify</text>
+<text text-anchor="middle" x="169" y="-346.4" font-family="Times,serif" font-size="14.00">Features</text>
+</g>
+<!-- background&#45;&gt;identify -->
+<g id="edge6" class="edge"><title>background&#45;&gt;identify</title>
+<path fill="none" stroke="black" d="M169,-416.223C169,-407.663 169,-398.271 169,-389.656"/>
+<polygon fill="black" stroke="black" points="172.5,-389.641 169,-379.641 165.5,-389.641 172.5,-389.641"/>
+</g>
+<!-- update -->
+<g id="node8" class="node"><title>update</title>
+<ellipse fill="lightgray" stroke="lightgray" cx="107" cy="-260" rx="41.3273" ry="41.0911"/>
+<text text-anchor="middle" x="107" y="-272.6" font-family="Times,serif" font-size="14.00">Update</text>
+<text text-anchor="middle" x="107" y="-255.8" font-family="Times,serif" font-size="14.00">Current</text>
+<text text-anchor="middle" x="107" y="-239" font-family="Times,serif" font-size="14.00">Results</text>
+</g>
+<!-- measure&#45;&gt;update -->
+<g id="edge11" class="edge"><title>measure&#45;&gt;update</title>
+<path fill="none" stroke="black" d="M57.5466,-338.371C63.9246,-328.392 71.941,-315.85 79.6519,-303.787"/>
+<polygon fill="black" stroke="black" points="82.7481,-305.441 85.1847,-295.13 76.85,-301.671 82.7481,-305.441"/>
+</g>
+<!-- compare -->
+<g id="node9" class="node"><title>compare</title>
+<ellipse fill="lightgray" stroke="lightgray" cx="107" cy="-152" rx="57.1664" ry="29.3315"/>
+<text text-anchor="middle" x="107" y="-156.2" font-family="Times,serif" font-size="14.00">Compare to</text>
+<text text-anchor="middle" x="107" y="-139.4" font-family="Times,serif" font-size="14.00">Previous</text>
+</g>
+<!-- measure&#45;&gt;compare -->
+<g id="edge5" class="edge"><title>measure&#45;&gt;compare</title>
+<path fill="none" stroke="black" d="M43.0498,-338.19C41.0734,-310.322 40.2321,-258.431 56,-218 60.3533,-206.837 67.2956,-196.039 74.6738,-186.556"/>
+<polygon fill="black" stroke="black" points="77.5774,-188.535 81.2157,-178.584 72.1663,-184.094 77.5774,-188.535"/>
+</g>
+<!-- identify&#45;&gt;update -->
+<g id="edge9" class="edge"><title>identify&#45;&gt;update</title>
+<path fill="none" stroke="black" d="M156.453,-338.371C150.075,-328.392 142.059,-315.85 134.348,-303.787"/>
+<polygon fill="black" stroke="black" points="137.15,-301.671 128.815,-295.13 131.252,-305.441 137.15,-301.671"/>
+</g>
+<!-- identify&#45;&gt;compare -->
+<g id="edge7" class="edge"><title>identify&#45;&gt;compare</title>
+<path fill="none" stroke="black" d="M170.717,-338.202C172.385,-310.349 172.727,-258.475 157,-218 152.693,-206.915 145.873,-196.143 138.639,-186.661"/>
+<polygon fill="black" stroke="black" points="141.221,-184.286 132.228,-178.684 135.765,-188.672 141.221,-184.286"/>
+</g>
+<!-- find -->
+<g id="node7" class="node"><title>find</title>
+<ellipse fill="yellow" stroke="yellow" cx="107" cy="-43" rx="43.3049" ry="43.4069"/>
+<text text-anchor="middle" x="107" y="-47.2" font-family="Times,serif" font-size="14.00">Find</text>
+<text text-anchor="middle" x="107" y="-30.4" font-family="Times,serif" font-size="14.00">Outliers</text>
+</g>
+<!-- update&#45;&gt;compare -->
+<g id="edge10" class="edge"><title>update&#45;&gt;compare</title>
+<path fill="none" stroke="black" d="M107,-218.624C107,-209.889 107,-200.668 107,-191.988"/>
+<polygon fill="black" stroke="black" points="110.5,-191.736 107,-181.736 103.5,-191.736 110.5,-191.736"/>
+</g>
+<!-- compare&#45;&gt;find -->
+<g id="edge8" class="edge"><title>compare&#45;&gt;find</title>
+<path fill="none" stroke="black" d="M107,-122.326C107,-114.32 107,-105.361 107,-96.4415"/>
+<polygon fill="black" stroke="black" points="110.5,-96.4405 107,-86.4405 103.5,-96.4405 110.5,-96.4405"/>
+</g>
+<!-- tr1 -->
+<g id="node10" class="node"><title>tr1</title>
+<ellipse fill="lightgrey" stroke="black" cx="107" cy="-828" rx="27" ry="18"/>
+<text text-anchor="middle" x="107" y="-823.8" font-family="Times,serif" font-size="14.00">🎦</text>
+</g>
+<!-- tr1&#45;&gt;sil -->
+<g id="edge12" class="edge"><title>tr1&#45;&gt;sil</title>
+<path fill="none" stroke="black" d="M107,-809.902C107,-802.665 107,-793.632 107,-783.807"/>
+<polygon fill="black" stroke="black" points="110.5,-783.753 107,-773.753 103.5,-783.753 110.5,-783.753"/>
+</g>
+</g>
+</svg>

@@ -82,116 +82,23 @@ SELECT * FROM ChestSeq GROUP BY Tissue.Type
 
 <div class="centered-image"><img src="images/indexing-008.png"></div>
 
-<table class="styled-table">
-  <thead>
-    <tr>
-      <th>Organ</th>
-      <th>Subdivisions</th>
-      <th>Size</th>
-      <th>Density</th>
-      <th>Granularity</th>
-      <th>Contrast</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Organ-1</td>
-      <td>330</td>
-      <td>19716</td>
-      <td>167.005424</td>
-      <td>5.236076</td>
-      <td>79.237187</td>
-    </tr>
-    <tr>
-      <td>Organ-2</td>
-      <td>304</td>
-      <td>24070</td>
-      <td>114.700884</td>
-      <td>15.393268</td>
-      <td>114.506345</td>
-    </tr>
-    <tr>
-      <td>Organ-3</td>
-      <td>1527</td>
-      <td>34052</td>
-      <td>108.518688</td>
-      <td>2.199077</td>
-      <td>38.206649</td>
-    </tr>
-    <tr>
-      <td>Organ-4</td>
-      <td>923</td>
-      <td>45009</td>
-      <td>167.644877</td>
-      <td>5.812359</td>
-      <td>93.827160</td>
-    </tr>
-    <tr>
-      <td>Organ-5</td>
-      <td>2241</td>
-      <td>420616</td>
-      <td>4.335617</td>
-      <td>3.901147</td>
-      <td>1.638404</td>
-    </tr>
-    <tr>
-      <td>Organ-6</td>
-      <td>1249</td>
-      <td>111752</td>
-      <td>87.660901</td>
-      <td>5.682593</td>
-      <td>36.652440</td>
-    </tr>
-    <tr>
-      <td>Organ-7</td>
-      <td>1810</td>
-      <td>42470</td>
-      <td>92.295132</td>
-      <td>2.201355</td>
-      <td>31.504958</td>
-    </tr>
-    <tr>
-      <td>Organ-8</td>
-      <td>981</td>
-      <td>46241</td>
-      <td>98.798077</td>
-      <td>3.735183</td>
-      <td>36.448815</td>
-    </tr>
-    <tr>
-      <td>Organ-9</td>
-      <td>1218</td>
-      <td>132143</td>
-      <td>87.141019</td>
-      <td>6.333512</td>
-      <td>36.699420</td>
-    </tr>
-    <tr>
-      <td>Organ-10</td>
-      <td>1212</td>
-      <td>116776</td>
-      <td>102.505143</td>
-      <td>6.505061</td>
-      <td>46.829904</td>
-    </tr>
-    <tr>
-      <td>Organ-11</td>
-      <td>1179</td>
-      <td>303374</td>
-      <td>167.225698</td>
-      <td>6.278122</td>
-      <td>41.896361</td>
-    </tr>
-    <tr>
-      <td>Organ-12</td>
-      <td>995</td>
-      <td>264328</td>
-      <td>74.416866</td>
-      <td>6.585659</td>
-      <td>20.422562</td>
-    </tr>
-  </tbody>
-</table>
+
+| Organ | Subdivisions | Size | Density | Granularity | Contrast |
+| --- | --- | --- | --- | --- | --- |
+| Organ-1 | 330 | 19716 | 167.005424 | 5.236076 | 79.237187 |
+| Organ-2 | 304 | 24070 | 114.700884 | 15.393268 | 114.506345 |
+| Organ-3 | 1527 | 34052 | 108.518688 | 2.199077 | 38.206649 |
+| Organ-4 | 923 | 45009 | 167.644877 | 5.812359 | 93.827160 |
+| Organ-5 | 2241 | 420616 | 4.335617 | 3.901147 | 1.638404 |
+| Organ-6 | 1249 | 111752 | 87.660901 | 5.682593 | 36.652440 |
+| Organ-7 | 1810 | 42470 | 92.295132 | 2.201355 | 31.504958 |
+| Organ-8 | 981 | 46241 | 98.798077 | 3.735183 | 36.448815 |
+| Organ-9 | 1218 | 132143 | 87.141019 | 6.333512 | 36.699420 |
+| Organ-10 | 1212 | 116776 | 102.505143 | 6.505061 | 46.829904 |
+| Organ-11 | 1179 | 303374 | 167.225698 | 6.278122 | 41.896361 |
+| Organ-12 | 995 | 264328 | 74.416866 | 6.585659 | 20.422562 |
+
+
 
 From all of the images general trends can be identified by examining all of the phenotypes and trying to identify the important ones for differentiating disease. The following figure shows the relationship between shape (of the super-pixels) and the healthy segments as pink dots and the abnormal as blue dots. The shape and position provide some differentation but are not definitive enough to clearly distinguish the two groups.
 

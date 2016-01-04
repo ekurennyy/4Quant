@@ -132,7 +132,3 @@ To find out more about the technical aspects of our solution, check out our pres
 * [Synchrotron Radiation Instruementation 2015](http://4quant.com/SRI2015)
 * [ICTMS 2015](http://4quant.com/ICTMS2015)
 * [LifeScienceForumBasel 2015](http://4quant.com/LSFB2015)
-
-<!-- Strange text here -->
-
-<!-- ## Acknowledgements  -->

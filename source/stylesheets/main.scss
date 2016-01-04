@@ -182,7 +182,6 @@ p + p {
 
 .news p {
   margin: 0 0 1em 0;
-
   text-indent: 0;
 }
 
@@ -192,10 +191,9 @@ p + p {
 }
 
 .news {
-    margin: 0 0 2.5em 0;
+  margin: 0 0 2.5em 0;
 }
 
-//todo: macht das was?
 .no-indent {
   text-indent: 0;
 }
@@ -231,11 +229,6 @@ strong {
   font-weight: 600;
 }
 
-.alt-font {
-  font-family: $alt-font-family;
-  font-size: 1.15em;
-}
-
 header, nav {
   text-align: center;
   font-family: $alt-font-family;
@@ -250,11 +243,6 @@ header, nav {
   display: inline;
   padding-left: 4.0375px;
   padding-right: 4.0375px;
-}
-
-.caption {
-  text-align: right;
-  vertical-align: middle;
 }
 
 .brand {
@@ -292,23 +280,6 @@ img {
   display: block;
   margin: 5px auto;
   max-width: 100%;
-}
-
-.table {
-  display: table;
-  font-size: 1.2em;
-}
-
-.row {
-  display: table-row;
-}
-
-.cell {
-  display: table-cell;
-  line-height: 1.7em;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-bottom: 10px;
 }
 
 .code {

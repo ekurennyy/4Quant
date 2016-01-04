@@ -98,7 +98,7 @@ With cloud-integration and *Big Data*-based frameworks, even handling an entire 
 
 The images which are collected by the traffic cameras at rate of 30 frames per second contain substantial dynamic information on not only cars, but buildings, landscapes, and people. The first basic task is the segmentation of the people which can provide information on their number, movement, and behavior
 
-<div class="half-width-image"><img src="images/pursuing-criminals/pc-011.png">
+<div class="half-width-image"><img src="images/pursuing-criminals/pc-011.png"></div>
 
 The segmented image above can be transformed into quantitative metrics at each time point. These metrics can then be processed to extract relevant quality assessment information for the tracks.
 
@@ -195,7 +195,3 @@ To find out more about the technical aspects of our solution, check out our pres
 * [Synchrotron Radiation Instruementation 2015](http://4quant.com/SRI2015)
 * [ICTMS 2015](http://4quant.com/ICTMS2015)
 * [LifeScienceForumBasel 2015](http://4quant.com/LSFB2015)
-
-<!-- Strange text here -->
-
-<!-- ## Acknowledgements  -->
